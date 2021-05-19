@@ -1,0 +1,71 @@
+[alias]
+l = "log --pretty=oneline -n 20 --graph --abbrev-commit"
+s = "status -sb"
+p = "!'git pull; git submodule foreach git pull origin master'"
+go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+tags = "tag - l"
+branches = "branch -a"
+remotes = "remote -v"
+amend = "commit --amend --reuse-message=HEAD"
+credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
+reb = "!r() { git rebase -i HEAD~$1; }; r"
+contributors = "shortlog --summary --numbered"
+lg = "log --color --decorate --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an (%G?)>%Creset' --abbrev-commit"
+undo = "!git reset HEAD~1 --mixed"
+
+[apply]
+whitespace = fix
+
+[core]
+whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+
+[color]
+ui = auto
+
+[diff]
+renames = copies
+
+[help]
+autocorrect = 1
+
+[merge]
+log = true
+
+[push]
+default = simple
+
+[url "git@github.com:github"]
+insteadOf = "https://github.com/github"
+insteadOf = "github:github"
+insteadOf = "git://github.com/github"
+
+[url "git@github.com:"]
+pushInsteadOf = "https://github.com/"
+pushInsteadOf = "github:"
+pushInsteadOf = "git://github.com/"
+
+[url "git://github.com/"]
+insteadOf = "github:"
+
+[url "git@gist.github.com:"]
+insteadOf = "gst:"
+pushInsteadOf = "gist:"
+pushInsteadOf = "git://gist.github.com/"
+
+[url "git://gist.github.com/"]
+insteadOf = "gist:"
+
+[commit]
+gpgsign = true
+key = "0x14642134887B78A"
+signByDefault = true
+
+[pull]
+rebase = true
+
+[user]
+name = "Jim Anders"
+email = "jimanders223@gmail.com"
+
+[init]
+defaultBranch = main
