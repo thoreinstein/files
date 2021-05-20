@@ -1,5 +1,8 @@
 . /Users/kon8522/.nix-profile/etc/profile.d/nix.sh
 
+autoload -U compinit && compinit
+fpath=($HOME/.nix-profile/share/zsh/site-functions $fpath)
+
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
