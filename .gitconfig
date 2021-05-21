@@ -69,3 +69,16 @@ email = "jimanders223@gmail.com"
 
 [init]
 defaultBranch = main
+
+[merge]
+        tool = vscode
+[mergetool]
+        keepBackup = false
+[mergetool "vscode"]
+        cmd = code --wait $MERGED
+
+[diff]
+        tool = vscode
+[difftool "vscode"]
+        cmd = code --wait --diff $LOCAL $REMOTE
+
