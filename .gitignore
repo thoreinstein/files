@@ -34,3 +34,8 @@ src
 .zcompdump
 .lesshst
 .terraform.d/
+.bash_sessions/
+.dropbox/
+.zsh_sessions
+Dropbox
+.gnupg/
