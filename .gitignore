@@ -39,3 +39,4 @@ src
 .zsh_sessions
 Dropbox
 .gnupg/
+.config/gh/hosts.yml
