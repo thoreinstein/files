@@ -55,11 +55,6 @@ pushInsteadOf = "git://gist.github.com/"
 [url "git://gist.github.com/"]
 insteadOf = "gist:"
 
-[commit]
-gpgsign = true
-key = "0x14642134887B78A"
-signByDefault = true
-
 [pull]
 rebase = true
 

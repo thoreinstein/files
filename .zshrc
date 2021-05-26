@@ -1,8 +1,11 @@
 source "$HOME"/.nix-profile/etc/profile.d/nix.sh
 eval "$(starship init zsh)"
 
+export GPG_TTY="$(tty)"
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+gpgconf --launch gpg-agent
+
 alias l="exa -halF"
-alias git="hub"
 alias cat="bat"
 alias find="fd"
 alias ls="exa"

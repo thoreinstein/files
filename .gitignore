@@ -40,3 +40,4 @@ src
 Dropbox
 .gnupg/
 .config/gh/hosts.yml
+.psql_history
