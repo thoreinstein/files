@@ -3,16 +3,17 @@
 {
   environment = {
     systemPackages = with pkgs; [
-       bat
-       direnv
-       exa
-       fd
-       gitAndTools.gitFull
-       gitAndTools.hub
-       starship
-	yubikey-manager
-	yubikey-personalization
-	gnupg
+      config.programs.vim.package
+      bat
+      direnv
+      exa
+      fd
+      gh
+      gitAndTools.gitFull
+      gnupg
+      starship
+      yubikey-manager
+      yubikey-personalization
     ];
     loginShell = "${pkgs.zsh}/bin/zsh -l";
 
@@ -87,6 +88,8 @@
   };
 
   programs = {
+    vim = { package = pkgs.neovim-nightly; };
+
     gnupg = {
       agent = {
         enable = true;
@@ -174,4 +177,12 @@
       enableSyntaxHighlighting = true;
     };
   };
+
+  nixpkgs.overlays = [
+    (import (builtins.fetchTarball {
+      url =
+        "https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz";
+    }))
+
+  ];
 }
