@@ -61,6 +61,7 @@ rebase = true
 [user]
 name = "Jim Anders"
 email = "jimanders223@gmail.com"
+	signingKey = 0x2420730EDEC4589A
 
 [init]
 defaultBranch = main
@@ -76,3 +77,5 @@ cmd = code --wait $MERGED
 tool = vscode
 [difftool "vscode"]
 cmd = code --wait --diff $LOCAL $REMOTE
+[commit]
+	gpgsign = true

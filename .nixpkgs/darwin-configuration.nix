@@ -10,6 +10,9 @@
        gitAndTools.gitFull
        gitAndTools.hub
        starship
+	yubikey-manager
+	yubikey-personalization
+	gnupg
     ];
     loginShell = "${pkgs.zsh}/bin/zsh -l";
 
@@ -60,7 +63,7 @@
         NSAutomaticPeriodSubstitutionEnabled = false;
         NSAutomaticQuoteSubstitutionEnabled = false;
         NSAutomaticSpellingCorrectionEnabled = false;
-        _HIHideMenuBar = true;
+        _HIHideMenuBar = false;
         NSTableViewDefaultSizeMode = 2;
         AppleShowScrollBars = "Automatic";
         NSUseAnimatedFocusRing = false;
