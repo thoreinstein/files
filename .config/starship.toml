@@ -1,0 +1,22 @@
+[package]
+disabled = true
+
+[golang]
+disabled = true
+
+[lua]
+disabled = true
+
+[nix_shell]
+impure_msg = ""
+pure_msg = "[pure shell](bold green)"
+format = '[$state(\($name\))](bold blue) '
+
+[nodejs]
+disabled = true
+
+[terraform]
+disabled = true
+
+[git_branch]
+symbol = ""
