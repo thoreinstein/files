@@ -12,9 +12,11 @@
       gitAndTools.gitFull
       gnupg
       starship
+      rnix-lsp
       yubikey-manager
       yubikey-personalization
     ];
+
     loginShell = "${pkgs.zsh}/bin/zsh -l";
 
     shellAliases = {
@@ -23,6 +25,7 @@
       cat = "bat";
       find = "fd";
       ls = "exa";
+      vim = "nvim";
     };
 
     shells = with pkgs; [ bashInteractive zsh ];
@@ -36,6 +39,7 @@
       FTP_PROXY = "http://127.0.0.1:3128";
       HTTP_PROXY = "http://127.0.0.1:3128";
       HTTPS_PROXY = "http://127.0.0.1:3128";
+      EDITOR = "nvim";
     };
   };
 

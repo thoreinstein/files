@@ -1,23 +1,26 @@
 local cmd = vim.cmd  -- to execute Vim commands e.g. cmd('pwd')
 local fn = vim.fn    -- to call Vim functions e.g. fn.bufnr()
-local g = vim.g      -- a table to access global variables
+local g = vim.g
 
 cmd 'packadd paq-nvim'               -- load the package manager
 local paq = require('paq-nvim').paq  -- a convenient alias
 paq {'savq/paq-nvim', opt = true}    -- paq-nvim manages itself
--- paq {'shougo/deoplete-lsp'}
--- paq {'shougo/deoplete.nvim', run = fn['remote#host#UpdateRemotePlugins']}
 paq {'nvim-treesitter/nvim-treesitter'}
 paq {'neovim/nvim-lspconfig'}
-paq {'kabouzeid/nvim-lspinstall'}
 paq {'junegunn/fzf', run = fn['fzf#install']}
 paq {'junegunn/fzf.vim'}
 paq {'ojroques/nvim-lspfuzzy'}
 paq {'dracula/vim'}
 paq {'hrsh7th/nvim-compe'}
--- g['deoplete#enable_at_startup'] = 1  -- enable deoplete at startup
+paq {'LnL7/vim-nix'}
+paq {'kyazdani42/nvim-web-devicons'}
+paq {'nvim-lua/popup.nvim'}
+paq {'nvim-telescope/telescope.nvim'}
+paq {'nvim-lua/plenary.nvim'}
+paq {'pwntester/octo.nvim'}
+paq {'TimUntersberger/neogit'}
 
-vim.g.mapleader = ','
+g['mapleader'] = ','
 
 local scopes = {o = vim.o, b = vim.bo, w = vim.wo}
 
@@ -72,13 +75,53 @@ ts.setup {ensure_installed = 'maintained', highlight = {enable = true}}
 
 local lsp = require 'lspconfig'
 local lspfuzzy = require 'lspfuzzy'
-local lspinstall = require 'lspinstall'
-lspinstall.setup() -- important
 
-local servers = lspinstall.installed_servers()
-for _, server in pairs(servers) do
-  lsp[server].setup{}
+local system_name
+if vim.fn.has("mac") == 1 then
+  system_name = "macOS"
+elseif vim.fn.has("unix") == 1 then
+  system_name = "Linux"
+elseif vim.fn.has('win32') == 1 then
+  system_name = "Windows"
+else
+  print("Unsupported system for sumneko")
 end
+
+-- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
+local sumneko_root_path = vim.fn.stdpath('data')..'/lspinstall/lua/sumneko-lua/extension/server'
+local sumneko_binary = sumneko_root_path.."/bin/"..system_name.."/lua-language-server"
+--/Users/kon8522/.local/share/nvim/lspinstall/lua/sumneko-lua/extension/server/bin/macOS
+
+require'lspconfig'.sumneko_lua.setup {
+  cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
+  settings = {
+    Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+        -- Setup your lua path
+        path = vim.split(package.path, ';'),
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = {
+          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+          [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+        },
+      },
+      -- Do not send telemetry data containing a randomized but unique identifier
+      telemetry = {
+        enable = false,
+      },
+    },
+  },
+}
+lsp.rnix.setup{}
+lsp.terraformls.setup{}
 
 -- For ccls we use the default settings
 lspfuzzy.setup {}  -- Make the LSP client use FZF instead of the quickfix list
@@ -119,3 +162,25 @@ require'compe'.setup {
 }
 
 map('n', '<leader>p', '<cmd>:GFiles<CR>')
+
+require'nvim-web-devicons'.setup {
+ -- globally enable default icons (default to false)
+ -- will get overriden by `get_icons` option
+ default = true;
+}
+require"octo".setup({
+  date_format = "%Y %b %d %I:%M %p %Z";    -- date format
+  default_remote = {"upstream", "origin"}; -- order to try remotes
+  reaction_viewer_hint_icon = "";         -- marker for user reactions
+  user_icon = " ";                        -- user icon
+  timeline_marker = "";                   -- timeline marker
+  timeline_indent = "2";                   -- timeline indentation
+  right_bubble_delimiter = "";            -- Bubble delimiter
+  left_bubble_delimiter = "";             -- Bubble delimiter
+  github_hostname = "";                    -- GitHub Enterprise host
+  snippet_context_lines = 4;               -- number or lines around commented lines
+  file_panel = {
+    size = 10,                             -- changed files panel rows
+    use_icons = true                       -- use web-devicons in file panel
+  },
+})

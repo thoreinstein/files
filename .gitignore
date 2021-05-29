@@ -41,3 +41,6 @@ Dropbox
 .gnupg/
 .config/gh/hosts.yml
 .psql_history
+.azuredatastudio/
+.pgadmin
+go
