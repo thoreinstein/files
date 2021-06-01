@@ -44,3 +44,6 @@ Dropbox
 .azuredatastudio/
 .pgadmin
 go
+**/*/tags
+tags
+.weechat/

@@ -19,6 +19,9 @@ paq {'nvim-telescope/telescope.nvim'}
 paq {'nvim-lua/plenary.nvim'}
 paq {'pwntester/octo.nvim'}
 paq {'TimUntersberger/neogit'}
+paq {'hashivim/vim-terraform'}
+paq {'ludovicchabant/vim-gutentags'}
+paq {'nvim-telescope/telescope-github.nvim'}
 
 g['mapleader'] = ','
 
@@ -122,6 +125,12 @@ require'lspconfig'.sumneko_lua.setup {
 }
 lsp.rnix.setup{}
 lsp.terraformls.setup{}
+lsp.bashls.setup{}
+lsp.dockerls.setup{}
+lsp.gopls.setup{}
+lsp.jsonls.setup{}
+lsp.tsserver.setup{}
+lsp.tflint.setup{}
 
 -- For ccls we use the default settings
 lspfuzzy.setup {}  -- Make the LSP client use FZF instead of the quickfix list
@@ -161,13 +170,20 @@ require'compe'.setup {
   };
 }
 
-map('n', '<leader>p', '<cmd>:GFiles<CR>')
+require('telescope').load_extension('gh')
+
+map('n', '<space>tp', '<cmd>:Telescope git_files<CR>')
+map('n', '<space>tg', '<cmd>:Telescope live_grep<CR>')
+map('n', '<space>tb', '<cmd>:Telescope buffers<CR>')
+map('n', '<space>th', '<cmd>:Telescope help_tags<CR>')
+map('n', '<space>tm', '<cmd>:Telescope man_pages<CR>')
 
 require'nvim-web-devicons'.setup {
  -- globally enable default icons (default to false)
  -- will get overriden by `get_icons` option
  default = true;
 }
+
 require"octo".setup({
   date_format = "%Y %b %d %I:%M %p %Z";    -- date format
   default_remote = {"upstream", "origin"}; -- order to try remotes

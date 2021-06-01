@@ -3,16 +3,17 @@
 {
   environment = {
     systemPackages = with pkgs; [
-      config.programs.vim.package
       bat
+      config.programs.vim.package
       direnv
       exa
       fd
       gh
       gitAndTools.gitFull
       gnupg
-      starship
+      nix-direnv
       rnix-lsp
+      starship
       yubikey-manager
       yubikey-personalization
     ];
