@@ -47,3 +47,5 @@ go
 **/*/tags
 tags
 .weechat/
+VirtualBox VMs/
+**/*/.direnv

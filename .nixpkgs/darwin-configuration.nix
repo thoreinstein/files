@@ -14,6 +14,8 @@
       nix-direnv
       rnix-lsp
       starship
+      universal-ctags
+      urlview
       yubikey-manager
       yubikey-personalization
     ];
@@ -42,6 +44,10 @@
       HTTPS_PROXY = "http://127.0.0.1:3128";
       EDITOR = "nvim";
     };
+
+    pathsToLink = [
+      "/share/nix-direnv"
+    ];
   };
 
   system = {

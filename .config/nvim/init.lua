@@ -7,8 +7,6 @@ local paq = require('paq-nvim').paq  -- a convenient alias
 paq {'savq/paq-nvim', opt = true}    -- paq-nvim manages itself
 paq {'nvim-treesitter/nvim-treesitter'}
 paq {'neovim/nvim-lspconfig'}
-paq {'junegunn/fzf', run = fn['fzf#install']}
-paq {'junegunn/fzf.vim'}
 paq {'ojroques/nvim-lspfuzzy'}
 paq {'dracula/vim'}
 paq {'hrsh7th/nvim-compe'}
@@ -20,8 +18,11 @@ paq {'nvim-lua/plenary.nvim'}
 paq {'pwntester/octo.nvim'}
 paq {'TimUntersberger/neogit'}
 paq {'hashivim/vim-terraform'}
-paq {'ludovicchabant/vim-gutentags'}
 paq {'nvim-telescope/telescope-github.nvim'}
+paq {'christoomey/vim-tmux-navigator'}
+paq {'kyazdani42/nvim-tree.lua'}
+paq {'tpope/vim-commentary'}
+paq {'tpope/vim-surround'}
 
 g['mapleader'] = ','
 
@@ -200,3 +201,5 @@ require"octo".setup({
     use_icons = true                       -- use web-devicons in file panel
   },
 })
+
+map('n', '<C-n>', '<cmd>:NvimTreeToggle<CR>')
