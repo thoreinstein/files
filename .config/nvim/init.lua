@@ -15,7 +15,6 @@ paq {'kyazdani42/nvim-web-devicons'}
 paq {'nvim-lua/popup.nvim'}
 paq {'nvim-telescope/telescope.nvim'}
 paq {'nvim-lua/plenary.nvim'}
-paq {'pwntester/octo.nvim'}
 paq {'TimUntersberger/neogit'}
 paq {'hashivim/vim-terraform'}
 paq {'nvim-telescope/telescope-github.nvim'}
@@ -23,6 +22,7 @@ paq {'christoomey/vim-tmux-navigator'}
 paq {'kyazdani42/nvim-tree.lua'}
 paq {'tpope/vim-commentary'}
 paq {'tpope/vim-surround'}
+paq {'godlygeek/tabular'}
 
 g['mapleader'] = ','
 
@@ -31,6 +31,15 @@ local scopes = {o = vim.o, b = vim.bo, w = vim.wo}
 local function opt(scope, key, value)
   scopes[scope][key] = value
   if scope ~= 'o' then scopes['o'][key] = value end
+end
+
+local function create_augroup(autocmds, name)
+  cmd('augroup ' .. name)
+  cmd('autocmd!')
+  for _, autocmd in ipairs(autocmds) do
+    cmd('autocmd ' .. table.concat(autocmd, ' '))
+  end
+  cmd('augroup END')
 end
 
 local indent = 2
@@ -180,26 +189,16 @@ map('n', '<space>th', '<cmd>:Telescope help_tags<CR>')
 map('n', '<space>tm', '<cmd>:Telescope man_pages<CR>')
 
 require'nvim-web-devicons'.setup {
- -- globally enable default icons (default to false)
- -- will get overriden by `get_icons` option
- default = true;
+  -- globally enable default icons (default to false)
+  -- will get overriden by `get_icons` option
+  default = true;
 }
 
-require"octo".setup({
-  date_format = "%Y %b %d %I:%M %p %Z";    -- date format
-  default_remote = {"upstream", "origin"}; -- order to try remotes
-  reaction_viewer_hint_icon = "";         -- marker for user reactions
-  user_icon = " ";                        -- user icon
-  timeline_marker = "";                   -- timeline marker
-  timeline_indent = "2";                   -- timeline indentation
-  right_bubble_delimiter = "";            -- Bubble delimiter
-  left_bubble_delimiter = "";             -- Bubble delimiter
-  github_hostname = "";                    -- GitHub Enterprise host
-  snippet_context_lines = 4;               -- number or lines around commented lines
-  file_panel = {
-    size = 10,                             -- changed files panel rows
-    use_icons = true                       -- use web-devicons in file panel
-  },
-})
-
 map('n', '<C-n>', '<cmd>:NvimTreeToggle<CR>')
+map('n', '<Space><Space>', '<cmd>:nohls<CR>')
+
+g.terraform_align = 1
+g.terraform_fmt_on_save = 1
+create_augroup({
+  {'BufRead,BufNewFile', '*.hcl', 'set', 'filetype=terraform'}
+}, 'terraform')

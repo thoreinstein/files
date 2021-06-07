@@ -49,3 +49,5 @@ tags
 .weechat/
 VirtualBox VMs/
 **/*/.direnv
+.envrc
+.direnv/

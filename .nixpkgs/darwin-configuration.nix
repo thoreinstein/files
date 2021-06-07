@@ -4,6 +4,7 @@
   environment = {
     systemPackages = with pkgs; [
       bat
+      cachix
       config.programs.vim.package
       direnv
       exa
@@ -16,6 +17,7 @@
       starship
       universal-ctags
       urlview
+      weechat
       yubikey-manager
       yubikey-personalization
     ];
@@ -24,7 +26,6 @@
 
     shellAliases = {
       l = "exa -halF";
-      git = "hub";
       cat = "bat";
       find = "fd";
       ls = "exa";
@@ -192,8 +193,7 @@
   nixpkgs.overlays = [
     (import (builtins.fetchTarball {
       url =
-        "https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz";
+        "https://github.com/nix-community/neovim-nightly-overlay/archive/8d8e974dd60b5ea5fa854bb2ce5db24eadf2b7df.tar.gz";
     }))
-
   ];
 }

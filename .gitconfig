@@ -12,6 +12,7 @@
   contributors = "shortlog --summary --numbered"
   lg = "log --color --decorate --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an (%G?)>%Creset' --abbrev-commit"
   undo = "!git reset HEAD~1 --mixed"
+  mt = "mergetool"
 
 [apply]
   whitespace = fix
@@ -80,3 +81,5 @@
   cmd = code --wait --diff $LOCAL $REMOTE
 [commit]
   gpgsign = true
+[rerere]
+	enabled = true
