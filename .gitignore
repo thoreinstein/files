@@ -51,3 +51,6 @@ VirtualBox VMs/
 **/*/.direnv
 .envrc
 .direnv/
+.cups/
+.kube
+.postgresql
