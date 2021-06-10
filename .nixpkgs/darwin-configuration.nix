@@ -9,9 +9,11 @@
       direnv
       exa
       fd
+      fzf
       gh
       gitAndTools.gitFull
       gnupg
+      jq
       nix-direnv
       rnix-lsp
       starship
