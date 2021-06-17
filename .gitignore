@@ -54,3 +54,7 @@ VirtualBox VMs/
 .cups/
 .kube
 .postgresql
+.ghc/
+.go/
+.packer.d
+.pulumi/

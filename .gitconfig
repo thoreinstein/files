@@ -69,16 +69,17 @@
   defaultBranch = main
 
 [merge]
-  tool = vscode
+  tool = nvim
 [mergetool]
   keepBackup = false
-[mergetool "vscode"]
-  cmd = code --wait $MERGED
+  prompt = false
+[mergetool "nvim"]
+  cmd = nvim -f -c Gdiffsplit! $MERGED
 
 [diff]
-  tool = vscode
-[difftool "vscode"]
-  cmd = code --wait --diff $LOCAL $REMOTE
+  tool = nvim
+[difftool "nvim"]
+  cmd = nvim -f -c Gdiffsplit! $LOCAL $REMOTE
 [commit]
   gpgsign = true
 [rerere]

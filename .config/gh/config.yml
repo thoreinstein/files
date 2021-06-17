@@ -9,3 +9,5 @@ pager: less
 # Aliases allow you to create nicknames for gh commands
 aliases:
     co: pr checkout
+    rw: run watch
+    wr: workflow run

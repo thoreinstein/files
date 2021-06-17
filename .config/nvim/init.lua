@@ -1,5 +1,4 @@
 local cmd = vim.cmd  -- to execute Vim commands e.g. cmd('pwd')
-local fn = vim.fn    -- to call Vim functions e.g. fn.bufnr()
 local g = vim.g
 
 cmd 'packadd paq-nvim'               -- load the package manager
@@ -7,22 +6,16 @@ local paq = require('paq-nvim').paq  -- a convenient alias
 paq {'savq/paq-nvim', opt = true}    -- paq-nvim manages itself
 paq {'nvim-treesitter/nvim-treesitter'}
 paq {'neovim/nvim-lspconfig'}
-paq {'ojroques/nvim-lspfuzzy'}
 paq {'dracula/vim'}
 paq {'hrsh7th/nvim-compe'}
 paq {'LnL7/vim-nix'}
-paq {'kyazdani42/nvim-web-devicons'}
-paq {'nvim-lua/popup.nvim'}
-paq {'nvim-telescope/telescope.nvim'}
-paq {'nvim-lua/plenary.nvim'}
-paq {'TimUntersberger/neogit'}
 paq {'hashivim/vim-terraform'}
-paq {'nvim-telescope/telescope-github.nvim'}
 paq {'christoomey/vim-tmux-navigator'}
-paq {'kyazdani42/nvim-tree.lua'}
 paq {'tpope/vim-commentary'}
 paq {'tpope/vim-surround'}
+paq {'tpope/vim-fugitive'}
 paq {'godlygeek/tabular'}
+paq {'Raimondi/delimitMate'}
 
 g['mapleader'] = ','
 
@@ -43,26 +36,26 @@ local function create_augroup(autocmds, name)
 end
 
 local indent = 2
-cmd 'colorscheme dracula'                              -- Put your favorite colorscheme here
-opt('b', 'expandtab', true)                           -- Use spaces instead of tabs
-opt('b', 'shiftwidth', indent)                        -- Size of an indent
-opt('b', 'smartindent', true)                         -- Insert indents automatically
-opt('b', 'tabstop', indent)                           -- Number of spaces tabs count for
-opt('o', 'completeopt', 'menuone,noselect')  -- Completion options (for deoplete)
-opt('o', 'hidden', true)                              -- Enable modified buffers in background
-opt('o', 'ignorecase', true)                          -- Ignore case
-opt('o', 'joinspaces', false)                         -- No double spaces with join after a dot
-opt('o', 'scrolloff', 4 )                             -- Lines of context
-opt('o', 'shiftround', true)                          -- Round indent
-opt('o', 'sidescrolloff', 8 )                         -- Columns of context
-opt('o', 'smartcase', true)                           -- Don't ignore case with capitals
-opt('o', 'splitbelow', true)                          -- Put new windows below current
-opt('o', 'splitright', true)                          -- Put new windows right of current
-opt('o', 'termguicolors', true)                       -- True color support
-opt('o', 'wildmode', 'list:longest')                  -- Command-line completion mode
-opt('w', 'list', true)                                -- Show some invisible characters (tabs...)
-opt('w', 'number', true)                              -- Print line number
-opt('w', 'relativenumber', true)                      -- Relative line numbers
+cmd 'colorscheme dracula'
+opt('b', 'expandtab', true)
+opt('b', 'shiftwidth', indent)
+opt('b', 'smartindent', true)
+opt('b', 'tabstop', indent)
+opt('o', 'completeopt', 'menuone,noselect')
+opt('o', 'hidden', true)
+opt('o', 'ignorecase', true)
+opt('o', 'joinspaces', false)
+opt('o', 'scrolloff', 4 )
+opt('o', 'shiftround', true)
+opt('o', 'sidescrolloff', 8 )
+opt('o', 'smartcase', true)
+opt('o', 'splitbelow', true)
+opt('o', 'splitright', true)
+opt('o', 'termguicolors', true)
+opt('o', 'wildmode', 'list:longest')
+opt('w', 'list', true)
+opt('w', 'number', true)
+opt('w', 'relativenumber', true)
 opt('w', 'wrap', false)
 
 local function map(mode, lhs, rhs, opts)
@@ -72,22 +65,27 @@ local function map(mode, lhs, rhs, opts)
 end
 
 map('i', 'jk', '<esc>')
-map('', '<leader>c', '"+y')       -- Copy to clipboard in normal, visual, select and operator modes
-map('i', '<C-u>', '<C-g>u<C-u>')  -- Make <C-u> undo-friendly
-map('i', '<C-w>', '<C-g>u<C-w>')  -- Make <C-w> undo-friendly
-
--- <Tab> to navigate the completion menu
-map('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true})
-map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
-
-map('n', '<C-l>', '<cmd>noh<CR>')    -- Clear highlights
-map('n', '<leader>o', 'm`o<Esc>``')  -- Insert a newline in normal mode
+map('', '<leader>c', '"+y')
+map('i', '<C-u>', '<C-g>u<C-u>')
+map('i', '<C-w>', '<C-g>u<C-w>')
 
 local ts = require 'nvim-treesitter.configs'
-ts.setup {ensure_installed = 'maintained', highlight = {enable = true}}
+ts.setup {
+  ensure_installed = 'maintained',
+  highlight = {enable = true},
+  indent = {ebable=true}
+}
 
+map('n', '<Space><Space>', '<cmd>:nohls<CR>')
+
+g.terraform_align = 1
+g.terraform_fmt_on_save = 1
+create_augroup({
+  {'BufRead,BufNewFile', '*.hcl', 'set', 'filetype=terraform'}
+}, 'terraform')
+
+-- LSP CONFIG
 local lsp = require 'lspconfig'
-local lspfuzzy = require 'lspfuzzy'
 
 local system_name
 if vim.fn.has("mac") == 1 then
@@ -141,9 +139,7 @@ lsp.gopls.setup{}
 lsp.jsonls.setup{}
 lsp.tsserver.setup{}
 lsp.tflint.setup{}
-
--- For ccls we use the default settings
-lspfuzzy.setup {}  -- Make the LSP client use FZF instead of the quickfix list
+lsp.hls.setup{}
 
 map('n', '<space>,', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
 map('n', '<space>;', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
@@ -155,6 +151,7 @@ map('n', '<space>m', '<cmd>lua vim.lsp.buf.rename()<CR>')
 map('n', '<space>r', '<cmd>lua vim.lsp.buf.references()<CR>')
 map('n', '<space>s', '<cmd>lua vim.lsp.buf.document_symbol()<CR>')
 
+-- COMPE CONFIG
 require'compe'.setup {
   enabled = true;
   autocomplete = true;
@@ -172,33 +169,17 @@ require'compe'.setup {
   source = {
     path = true;
     buffer = true;
-    calc = true;
     nvim_lsp = true;
     nvim_lua = true;
-    vsnip = true;
-    ultisnips = true;
+    spell = true;
+    nvim_treesitter = true;
   };
 }
 
-require('telescope').load_extension('gh')
-
-map('n', '<space>tp', '<cmd>:Telescope git_files<CR>')
-map('n', '<space>tg', '<cmd>:Telescope live_grep<CR>')
-map('n', '<space>tb', '<cmd>:Telescope buffers<CR>')
-map('n', '<space>th', '<cmd>:Telescope help_tags<CR>')
-map('n', '<space>tm', '<cmd>:Telescope man_pages<CR>')
-
-require'nvim-web-devicons'.setup {
-  -- globally enable default icons (default to false)
-  -- will get overriden by `get_icons` option
-  default = true;
-}
-
-map('n', '<C-n>', '<cmd>:NvimTreeToggle<CR>')
-map('n', '<Space><Space>', '<cmd>:nohls<CR>')
-
-g.terraform_align = 1
-g.terraform_fmt_on_save = 1
-create_augroup({
-  {'BufRead,BufNewFile', '*.hcl', 'set', 'filetype=terraform'}
-}, 'terraform')
+vim.cmd [[
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm({ 'keys': "\<Plug>delimitMateCR", 'mode': '' })
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+]]

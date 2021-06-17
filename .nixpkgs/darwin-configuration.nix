@@ -32,6 +32,8 @@
       find = "fd";
       ls = "exa";
       vim = "nvim";
+      dre = "vim $HOME/.nixpkgs/darwin-configuration.nix";
+      drs = "darwin-rebuild switch";
     };
 
     shells = with pkgs; [ bashInteractive zsh ];
@@ -46,6 +48,8 @@
       HTTP_PROXY = "http://127.0.0.1:3128";
       HTTPS_PROXY = "http://127.0.0.1:3128";
       EDITOR = "nvim";
+      GOPATH = "$HOME/.go";
+      PATH = "$GOPATH/bin:$PATH";
     };
 
     pathsToLink = [
