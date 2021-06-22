@@ -73,7 +73,7 @@ local ts = require 'nvim-treesitter.configs'
 ts.setup {
   ensure_installed = 'maintained',
   highlight = {enable = true},
-  indent = {ebable=true}
+  indent = {ebable = true},
 }
 
 map('n', '<Space><Space>', '<cmd>:nohls<CR>')
