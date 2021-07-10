@@ -14,6 +14,7 @@
       gitAndTools.gitFull
       gnupg
       jq
+      meld
       nix-direnv
       rnix-lsp
       starship
@@ -34,6 +35,7 @@
       vim = "nvim";
       dre = "vim $HOME/.nixpkgs/darwin-configuration.nix";
       drs = "darwin-rebuild switch";
+      gk = "gitk --all --date-order $(git log -g --pretty=%H)";
     };
 
     shells = with pkgs; [ bashInteractive zsh ];
@@ -49,7 +51,9 @@
       HTTPS_PROXY = "http://127.0.0.1:3128";
       EDITOR = "nvim";
       GOPATH = "$HOME/.go";
-      PATH = "$GOPATH/bin:$PATH";
+      PATH = "$GOPATH/bin:$HOME/.bin:$PATH";
+      FZF_DEFAULT_COMMAND="rg --files --hidden --no-ignore-vcs --vimgrep";
+      FZF_DEFAULT_OPTS="--height 50% --layout=reverse --border";
     };
 
     pathsToLink = [
@@ -197,7 +201,7 @@
   nixpkgs.overlays = [
     (import (builtins.fetchTarball {
       url =
-        "https://github.com/nix-community/neovim-nightly-overlay/archive/8d8e974dd60b5ea5fa854bb2ce5db24eadf2b7df.tar.gz";
+        "https://github.com/nix-community/neovim-nightly-overlay/archive/28d86db158ed595d064adde1239c83cc0ef3ee08.tar.gz";
     }))
   ];
 }

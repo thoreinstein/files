@@ -13,9 +13,9 @@ paq {'hashivim/vim-terraform'}
 paq {'christoomey/vim-tmux-navigator'}
 paq {'tpope/vim-commentary'}
 paq {'tpope/vim-surround'}
-paq {'tpope/vim-fugitive'}
 paq {'godlygeek/tabular'}
 paq {'Raimondi/delimitMate'}
+paq {'sbdchd/neoformat'}
 
 g['mapleader'] = ','
 
@@ -183,3 +183,9 @@ inoremap <silent><expr> <C-e>     compe#close('<C-e>')
 inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
 inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 ]]
+
+create_augroup({
+  {'BufWritePre', '*', 'undojoin', '|', 'Neoformat'}
+}, 'neoformat')
+g['neoformat_enabled_javascript'] = { 'prettier' }
+

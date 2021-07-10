@@ -19,7 +19,7 @@
 
 [core]
   whitespace = space-before-tab,-indent-with-non-tab,trailing-space
-  excludesFile = "~/.gitignore"
+  excludesFile = "~/.global_gitignore"
 
 [color]
   ui = auto
@@ -69,7 +69,7 @@
   defaultBranch = main
 
 [merge]
-  tool = nvim
+  tool = meld
 [mergetool]
   keepBackup = false
   prompt = false

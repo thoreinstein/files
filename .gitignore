@@ -22,7 +22,6 @@ Movies
 Music
 Pictures
 Public
-src
 .bash_history
 .local
 .vim
@@ -58,3 +57,15 @@ VirtualBox VMs/
 .go/
 .packer.d
 .pulumi/
+.idea/
+src/
+.android/
+.embedmongo
+.gradle
+.lemminx
+.m2
+.pgpass
+.redhat
+.sts4
+.bin/
+.ssh/config

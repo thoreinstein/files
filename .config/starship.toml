@@ -20,3 +20,9 @@ disabled = true
 
 [git_branch]
 symbol = ""
+
+[docker_context]
+disabled = true
+
+[kubernetes]
+disabled = true
