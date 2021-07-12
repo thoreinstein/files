@@ -16,6 +16,7 @@ paq {'tpope/vim-surround'}
 paq {'godlygeek/tabular'}
 paq {'Raimondi/delimitMate'}
 paq {'sbdchd/neoformat'}
+paq {'tpope/vim-unimpaired'}
 
 g['mapleader'] = ','
 
@@ -131,6 +132,7 @@ require'lspconfig'.sumneko_lua.setup {
     },
   },
 }
+
 lsp.rnix.setup{}
 lsp.terraformls.setup{}
 lsp.bashls.setup{}
