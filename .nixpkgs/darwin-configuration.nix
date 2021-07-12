@@ -53,7 +53,7 @@
       GOPATH = "$HOME/.go";
       PATH = "$GOPATH/bin:$HOME/.bin:$PATH";
       FZF_DEFAULT_COMMAND="rg --files --hidden --no-ignore-vcs --vimgrep";
-      FZF_DEFAULT_OPTS="--height 50% --layout=reverse --border";
+      FZF_DEFAULT_OPTS="--height 50% --layout=reverse --border -m";
     };
 
     pathsToLink = [

@@ -30,3 +30,7 @@ tm() {
 pp() {
   echo "$1" | tr ":" "\n" | nl
 }
+
+e () {
+  vim -q <(rg --vimgrep "$1")
+}
