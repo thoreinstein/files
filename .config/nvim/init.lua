@@ -17,6 +17,7 @@ paq {'godlygeek/tabular'}
 paq {'Raimondi/delimitMate'}
 paq {'sbdchd/neoformat'}
 paq {'tpope/vim-unimpaired'}
+paq {'tpope/vim-repeat'}
 
 g['mapleader'] = ','
 
