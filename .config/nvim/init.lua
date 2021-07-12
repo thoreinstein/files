@@ -142,6 +142,9 @@ lsp.jsonls.setup{}
 lsp.tsserver.setup{}
 lsp.tflint.setup{}
 lsp.hls.setup{}
+lsp.java_language_server.setup{
+  cmd= {'lang_server_mac.sh'}
+}
 
 map('n', '<space>,', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
 map('n', '<space>;', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
