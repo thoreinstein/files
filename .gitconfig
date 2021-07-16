@@ -82,5 +82,6 @@
   cmd = nvim -f -c Gdiffsplit! $LOCAL $REMOTE
 [commit]
   gpgsign = true
+	template = /Users/kon8522/.gittemplate
 [rerere]
 	enabled = true

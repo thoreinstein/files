@@ -29,3 +29,5 @@ require('terraform')
 require('neoformat')
 
 require('completion')
+
+require('gitcommit')
