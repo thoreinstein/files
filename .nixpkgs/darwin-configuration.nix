@@ -213,6 +213,6 @@
   ];
 
   nix.nixPath = [
-    "\$HOME/.nix-defexpr/channels"
+      "\$HOME/.nix-defexpr/channels"
   ];
 }
