@@ -34,3 +34,5 @@ pp() {
 e () {
   vim -q <(rg --vimgrep "$1")
 }
+
+zstyle ':completion:tm' fd -d 1 --search-path ~/src
