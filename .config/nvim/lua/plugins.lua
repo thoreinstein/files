@@ -13,5 +13,5 @@ use {'Raimondi/delimitMate'}
 use {'sbdchd/neoformat'}
 use {'tpope/vim-unimpaired'}
 use {'tpope/vim-repeat'}
--- use {'nvim-lua/completion-nvim'}
+use {'vmchale/dhall-vim'}
 end)

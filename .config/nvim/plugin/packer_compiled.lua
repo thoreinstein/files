@@ -69,10 +69,6 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  ["completion-nvim"] = {
-    loaded = true,
-    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/completion-nvim"
-  },
   delimitMate = {
     loaded = true,
     path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/delimitMate"
@@ -80,6 +76,10 @@ _G.packer_plugins = {
   neoformat = {
     loaded = true,
     path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/neoformat"
+  },
+  ["nvim-compe"] = {
+    loaded = true,
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/nvim-compe"
   },
   ["nvim-lspconfig"] = {
     loaded = true,

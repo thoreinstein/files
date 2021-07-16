@@ -45,15 +45,16 @@ require'lspconfig'.sumneko_lua.setup {
   },
 }
 
-lsp.rnix.setup{}
-lsp.terraformls.setup{}
 lsp.bashls.setup{}
+lsp.dhall_lsp_server.setup{}
 lsp.dockerls.setup{}
 lsp.gopls.setup{}
-lsp.jsonls.setup{}
-lsp.tsserver.setup{}
-lsp.tflint.setup{}
 lsp.hls.setup{}
 lsp.java_language_server.setup{
   cmd= {'lang_server_mac.sh'}
 }
+lsp.jsonls.setup{}
+lsp.rnix.setup{}
+lsp.terraformls.setup{}
+lsp.tflint.setup{}
+lsp.tsserver.setup{}
