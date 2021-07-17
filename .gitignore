@@ -69,3 +69,4 @@ src/
 .sts4
 .bin/
 .ssh/config
+.hyper_plugins/
