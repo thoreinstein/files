@@ -17,6 +17,7 @@
       meld
       nix-direnv
       nixUnstable
+      ripgrep
       rnix-lsp
       starship
       universal-ctags
