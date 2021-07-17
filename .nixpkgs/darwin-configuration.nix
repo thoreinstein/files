@@ -114,7 +114,7 @@
   };
 
   programs = {
-    vim = { package = pkgs.neovim-nightly; };
+    vim = { package = pkgs.neovim; };
 
     gnupg = {
       agent = {
@@ -206,12 +206,12 @@
     };
   };
 
-  nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
-      url =
-        "https://github.com/nix-community/neovim-nightly-overlay/archive/28d86db158ed595d064adde1239c83cc0ef3ee08.tar.gz";
-    }))
-  ];
+  # nixpkgs.overlays = [
+  #   (import (builtins.fetchTarball {
+  #     url =
+  #       "https://github.com/nix-community/neovim-nightly-overlay/archive/28d86db158ed595d064adde1239c83cc0ef3ee08.tar.gz";
+  #   }))
+  # ];
 
   nix.nixPath = [
       "\$HOME/.nix-defexpr/channels"
