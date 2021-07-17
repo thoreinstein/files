@@ -69,21 +69,37 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["completion-nvim"] = {
+    loaded = true,
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/completion-nvim"
+  },
   delimitMate = {
     loaded = true,
     path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/delimitMate"
+  },
+  ["dhall-vim"] = {
+    loaded = true,
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/dhall-vim"
+  },
+  ["lspsaga.nvim"] = {
+    loaded = true,
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/lspsaga.nvim"
   },
   neoformat = {
     loaded = true,
     path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/neoformat"
   },
-  ["nvim-compe"] = {
+  ["nord-vim"] = {
     loaded = true,
-    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/nvim-compe"
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/nord-vim"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
+  },
+  ["nvim-lspinstall"] = {
+    loaded = true,
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/nvim-lspinstall"
   },
   ["nvim-treesitter"] = {
     loaded = true,
