@@ -26,3 +26,6 @@ disabled = true
 
 [kubernetes]
 disabled = true
+
+[java]
+disabled = true
