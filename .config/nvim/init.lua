@@ -81,9 +81,11 @@ use 'arcticicestudio/nord-vim'
 use 'kabouzeid/nvim-lspinstall'
 use 'nvim-lua/completion-nvim'
 use 'glepnir/lspsaga.nvim'
+use 'Shougo/neosnippet.vim'
+use 'Shougo/neosnippet-snippets'
 end)
 
-cmd 'colorscheme nord'
+cmd 'colorscheme dracula'
 
 -- Normal Mode Maps
 utils.map('n', '<leader>c', '"+y')
@@ -168,6 +170,13 @@ lsp.rnix.setup{}
 lsp.terraformls.setup{}
 lsp.tflint.setup{}
 lsp.tsserver.setup{}
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+lsp.html.setup{
+  cmd = {'html-languageserver', '--stdio'},
+  capabilities = capabilities,
+}
 
 local ts = require 'nvim-treesitter.configs'
 ts.setup {
@@ -217,36 +226,4 @@ utils.map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
 
 utils.create_augroup({{'BufEnter', '*', 'lua require\'completion\'.on_attach()'}}, 'complete')
 
--- require'compe'.setup {
---   enabled = true;
---   autocomplete = true;
---   debug = false;
---   min_length = 2;
---   preselect = 'enable';
---   throttle_time = 80;
---   source_timeout = 200;
---   incomplete_delay = 400;
---   max_abbr_width = 100;
---   max_kind_width = 100;
---   max_menu_width = 100;
---   documentation = true;
-
---   source = {
---     path = true;
---     buffer = true;
---     nvim_lsp = true;
---     nvim_lua = true;
---     spell = true;
---     nvim_treesitter = true;
---   };
--- }
-
--- vim.cmd [[
--- inoremap <silent><expr> <C-Space> compe#complete()
--- inoremap <silent><expr> <CR>      compe#confirm({ 'keys': "\<Plug>delimitMateCR", 'mode': '' })
--- inoremap <silent><expr> <C-e>     compe#close('<C-e>')
--- inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
--- inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
--- ]]
-
--- vim.cmd 'autocmd BufEnter COMMIT_EDITMSG set colorcolumn=50'
+vim.cmd 'autocmd BufEnter COMMIT_EDITMSG set colorcolumn=50'

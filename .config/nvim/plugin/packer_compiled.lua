@@ -89,6 +89,14 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/neoformat"
   },
+  ["neosnippet-snippets"] = {
+    loaded = true,
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/neosnippet-snippets"
+  },
+  ["neosnippet.vim"] = {
+    loaded = true,
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/neosnippet.vim"
+  },
   ["nord-vim"] = {
     loaded = true,
     path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/nord-vim"
