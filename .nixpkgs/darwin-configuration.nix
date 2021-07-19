@@ -210,12 +210,13 @@ in
     };
   };
 
-  # nixpkgs.overlays = [
+  nixpkgs.overlays = [
+    (import ./tmux-overlay.nix)
   #   (import (builtins.fetchTarball {
   #     url =
   #       "https://github.com/nix-community/neovim-nightly-overlay/archive/28d86db158ed595d064adde1239c83cc0ef3ee08.tar.gz";
   #   }))
-  # ];
+  ];
 
   nix.nixPath = [
       "\$HOME/.nix-defexpr/channels"
