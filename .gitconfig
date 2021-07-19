@@ -63,7 +63,7 @@
 [user]
   name = "Jim Anders"
   email = "jimanders223@gmail.com"
-  signingKey = 0x2420730EDEC4589A
+  signingKey = 0x97E21CF52964AC23
 
 [init]
   defaultBranch = main
