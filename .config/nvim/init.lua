@@ -1,3 +1,8 @@
+local cmd = vim.cmd
+local fn = vim.fn
+local indent = 2
+local execute = vim.api.nvim_command
+
 local utils = { }
 
 local scopes = {o = vim.o, b = vim.bo, w = vim.wo}
@@ -14,52 +19,78 @@ function utils.map(mode, lhs, rhs, opts)
 end
 
 function utils.create_augroup(autocmds, name)
-  vim.cmd('augroup ' .. name)
-  vim.cmd('autocmd!')
+  cmd('augroup ' .. name)
+  cmd('autocmd!')
   for _, autocmd in ipairs(autocmds) do
-    vim.cmd('autocmd ' .. table.concat(autocmd, ' '))
+    cmd('autocmd ' .. table.concat(autocmd, ' '))
   end
-  vim.cmd('augroup END')
+  cmd('augroup END')
 end
 
 -- map leader to space
 vim.g['mapleader'] = ' '
 
-local cmd = vim.cmd
-local fn = vim.fn
-local indent = 2
-local execute = vim.api.nvim_command
-
 cmd 'syntax enable'
 cmd 'filetype plugin indent on'
 
-utils.opt('b', 'expandtab', true)
-utils.opt('b', 'shiftwidth', indent)
-utils.opt('b', 'smartindent', true)
-utils.opt('b', 'tabstop', indent)
-utils.opt('o', 'hidden', true)
-utils.opt('o', 'ignorecase', true)
-utils.opt('o', 'joinspaces', false)
-utils.opt('o', 'scrolloff', 4 )
-utils.opt('o', 'shiftround', true)
-utils.opt('o', 'sidescrolloff', 8 )
-utils.opt('o', 'smartcase', true)
-utils.opt('o', 'splitbelow', true)
-utils.opt('o', 'splitright', true)
+utils.opt('o', 'number', true)                  -- show line numbers
+utils.opt('o', 'backspace', 'indent,eol,start') -- make backspace more powerful
+utils.opt('o', 'showcmd', true)                 -- show what I am typing
+utils.opt('o', 'splitbelow', true)              -- horizontal splits go below
+utils.opt('o', 'splitright', true)              -- vertical splits go right
+utils.opt('o', 'encoding', 'utf-8')             -- default encoding is utf-8
+utils.opt('o', 'autowrite', true)               -- auto save before :next, :make etc.
+utils.opt('o', 'autoread', true)                -- auto read changed files
+utils.opt('o', 'laststatus', 2)                 -- always show status bar
+utils.opt('o', 'hidden', true)                  -- don't abandon hidden buffers
+utils.opt('o', 'incsearch', true)               -- show search matches while typing
+utils.opt('o', 'hlsearch', true)                -- highlight found searches
+utils.opt('o', 'ignorecase', true)              -- search case insensitive
+utils.opt('o', 'smartcase', true)               -- only when a search has a capital
+utils.opt('o', 'conceallevel', 0)               -- don't hide markdown
 utils.opt('o', 'termguicolors', true)
-utils.opt('o', 'wildmode', 'list:longest')
-utils.opt('w', 'list', true)
-utils.opt('w', 'number', true)
-utils.opt('w', 'relativenumber', true)
-utils.opt('w', 'wrap', false)
+
+-- handle long lines nicely
+utils.opt('o', 'wrap', true)
+utils.opt('o', 'textwidth', 80)
+utils.opt('o', 'formatoptions', 'qrn1')
+
+-- apply indentation to the next line
+utils.opt('o', 'autoindent', true)
+utils.opt('o', 'smartindent', true)
+cmd [[set complete-=i]]
+utils.opt('o', 'showmatch', true)
+utils.opt('o', 'smarttab', true)
+
+utils.opt('o', 'tabstop', 4)
+utils.opt('o', 'shiftwidth', 4)
+utils.opt('o', 'expandtab', true)
+utils.opt('o', 'shiftround', true)
+cmd [[set nrformats-=octal]]
+
+utils.opt('o', 'ttimeout', true)
+utils.opt('o', 'ttimeoutlen', 10)
+
+utils.opt('o', 'complete', '.,w,b,u,t')
+utils.opt('o', 'completeopt', 'longest,menuone,noinsert')
+
+utils.opt('o', 'scrolloff', 1 )
+utils.opt('o', 'sidescrolloff', 5 )
+
+utils.opt('o', 'wildmode', 'list:full')
+cmd [[set wildignore+=.hg,.git,.svn]]
+cmd [[set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg]]
+cmd [[set wildignore+=*.sw?]]
+cmd [[set wildignore+=*.DS_Store]]
+cmd [[set wildignore+=go/pkg]]
+cmd [[set wildignore+=go/bin]]
 
 -- Install packer.nvim if not exists
 local install_path = fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
   execute('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
 end
-vim.cmd [[packadd packer.nvim]]
-vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when there are changes in plugins.lua
+cmd [[packadd packer.nvim]]
 
 require('packer').startup(function()
 use {'wbthomason/packer.nvim', opt = true}    -- paq-nvim manages itself
@@ -86,6 +117,12 @@ use 'Shougo/neosnippet-snippets'
 end)
 
 cmd 'colorscheme dracula'
+
+-- Filetypes
+cmd 'au BufEnter COMMIT_EDITMSG set colorcolumn=50'
+cmd 'au BufEnter *.tf set ft=terraform'
+cmd 'au BufNewFile,BufRead *.tf set ft=terraform noet ts=4 sw=4 sts=4'
+cmd 'au BufNewFile,BufRead *.js set noet ts=2 sw=2 sts=2'
 
 -- Normal Mode Maps
 utils.map('n', '<leader>c', '"+y')
@@ -216,14 +253,11 @@ utils.create_augroup({
 
 vim.g['neoformat_enabled_javascript'] = { 'prettier' }
 
-utils.opt('o', 'completeopt', 'menuone,noinsert,noselect')
 
-vim.cmd [[set shortmess+=c]]
+cmd [[set shortmess+=c]]
 
 -- <Tab> to navigate the completion menu
 utils.map('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true})
 utils.map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
 
 utils.create_augroup({{'BufEnter', '*', 'lua require\'completion\'.on_attach()'}}, 'complete')
-
-vim.cmd 'autocmd BufEnter COMMIT_EDITMSG set colorcolumn=50'
