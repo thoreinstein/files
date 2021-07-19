@@ -187,16 +187,15 @@ in
         # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
         run '~/.tmux/plugins/tpm/tpm'
 
-        set -g @dracula-show-battery false
-        set -g @dracula-show-flags true
+        set -g @dracula-show-battery true
+        set -g @dracula-show-flags false
         set -g @dracula-show-powerline true
         set -g @dracula-military-time true
         set -g @dracula-show-left-icon session
         set -g @dracula-show-timezone false
-        set -g @dracula-show-flags true
         set -g @dracula-border-contrast true
-        set -g @dracula-cpu-usage true
-        set -g @dracula-ram-usage true
+        set -g @dracula-cpu-usage false
+        set -g @dracula-ram-usage false
       '';
     };
 
