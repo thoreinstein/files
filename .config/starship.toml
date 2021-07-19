@@ -8,6 +8,7 @@ disabled = true
 disabled = true
 
 [nix_shell]
+disabled = true
 impure_msg = ""
 pure_msg = "[pure shell](bold green)"
 format = '[$state(\($name\))](bold blue) '
