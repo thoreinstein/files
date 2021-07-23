@@ -19,6 +19,7 @@ aac() {
   fi
 }
 
+zstyle ':completion:tm' fd -d=1 --search-path="$HOME"/src
 tm() {
   [[ -n "$TMUX" ]] && change="switch-client" || change="attach-session"
   if [ $1 ]; then
@@ -35,4 +36,3 @@ e () {
   vim -q <(rg --vimgrep "$1")
 }
 
-zstyle ':completion:tm' fd -d 1 --search-path ~/src
