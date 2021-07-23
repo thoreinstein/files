@@ -1,9 +1,5 @@
 { config, pkgs, ... }:
 
-let
-  inherit (pkgs) lorri;
-
-in
 {
   environment = {
     systemPackages = with pkgs; [
@@ -15,13 +11,12 @@ in
       fd
       fzf
       gh
-      gitAndTools.gitFull
+      gitFull
       gnupg
       jq
-      lorri
       meld
       nix-direnv
-      nixUnstable
+      niv
       ripgrep
       rnix-lsp
       starship
@@ -59,15 +54,13 @@ in
       EDITOR = "nvim";
       GOPATH = "$HOME/.go";
       PATH = "$GOPATH/bin:$HOME/.bin:$PATH";
-      FZF_DEFAULT_COMMAND="rg --files --hidden --no-ignore-vcs --vimgrep";
-      FZF_DEFAULT_OPTS="--height 50% --layout=reverse --border -m";
+      FZF_DEFAULT_COMMAND = "rg --files --hidden --no-ignore-vcs --vimgrep";
+      FZF_DEFAULT_OPTS = "--height 50% --layout=reverse --border -m";
     };
 
-    pathsToLink = [
-      "/share/nix-direnv"
-    ];
+    pathsToLink = [ "/share/nix-direnv" ];
 
-    darwinConfig = "\$HOME/.nixpkgs/darwin-configuration.nix";
+    darwinConfig = "$HOME/.nixpkgs/darwin-configuration.nix";
   };
 
   system = {
@@ -161,9 +154,6 @@ in
         unbind R
         bind R source-file /etc/tmux.conf
 
-        # colors
-        set -g default-terminal "screen-256color"
-
         # title
         set -g set-titles on
         set -g set-titles-string '#T'
@@ -212,30 +202,11 @@ in
 
   nixpkgs.overlays = [
     (import ./tmux-overlay.nix)
-  #   (import (builtins.fetchTarball {
-  #     url =
-  #       "https://github.com/nix-community/neovim-nightly-overlay/archive/28d86db158ed595d064adde1239c83cc0ef3ee08.tar.gz";
-  #   }))
+    (import (builtins.fetchTarball {
+      url =
+        "https://github.com/nix-community/neovim-nightly-overlay/archive/a0d85023ff5a1fc148e3a7784dcd8db52588b90f.tar.gz";
+    }))
   ];
 
-  nix.nixPath = [
-      "\$HOME/.nix-defexpr/channels"
-  ];
-
-  launchd.user.agents = {
-    "lorri" = {
-      serviceConfig = {
-        WorkingDirectory = (builtins.getEnv "HOME");
-        EnvironmentVariables = {};
-        KeepAlive = true;
-        RunAtLoad = true;
-        StandardOutPath = "/var/tmp/lorri.log";
-        StandardErrorPath = "/var/tmp/lorri.log";
-      };
-      script = ''
-      source ${config.system.build.setEnvironment}
-      exec ${lorri}/bin/lorri daemon
-      '';
-    };
-  };
+  nix.nixPath = [ "$HOME/.nix-defexpr/channels" ];
 }
