@@ -70,3 +70,7 @@ src/
 .bin/
 .ssh/config
 .hyper_plugins/
+.cargo
+.grip
+.ipython
+.config/iterm2
