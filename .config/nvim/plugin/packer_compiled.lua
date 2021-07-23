@@ -70,89 +70,145 @@ time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   ["completion-nvim"] = {
-    loaded = true,
-    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/completion-nvim"
-  },
-  delimitMate = {
-    loaded = true,
-    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/delimitMate"
-  },
-  ["dhall-vim"] = {
-    loaded = true,
-    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/dhall-vim"
-  },
-  ["lspsaga.nvim"] = {
-    loaded = true,
-    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/lspsaga.nvim"
-  },
-  neoformat = {
-    loaded = true,
-    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/neoformat"
-  },
-  ["neosnippet-snippets"] = {
-    loaded = true,
-    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/neosnippet-snippets"
-  },
-  ["neosnippet.vim"] = {
-    loaded = true,
-    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/neosnippet.vim"
-  },
-  ["nord-vim"] = {
-    loaded = true,
-    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/nord-vim"
-  },
-  ["nvim-lspconfig"] = {
-    loaded = true,
-    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
-  },
-  ["nvim-lspinstall"] = {
-    loaded = true,
-    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/nvim-lspinstall"
-  },
-  ["nvim-treesitter"] = {
-    loaded = true,
-    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
-  },
-  ["packer.nvim"] = {
+    after = { "neosnippet.vim" },
     loaded = false,
     needs_bufread = false,
-    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/opt/packer.nvim"
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/opt/completion-nvim"
   },
-  tabular = {
+  ["emmet-vim"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/opt/emmet-vim"
+  },
+  ["indent-blankline.nvim"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/opt/indent-blankline.nvim"
+  },
+  ["lsp_extensions.nvim"] = {
+    load_after = {
+      ["nvim-lspconfig"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/opt/lsp_extensions.nvim"
+  },
+  ["lspsaga.nvim"] = {
+    config = { "\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20plugins.lspsaga\frequire\0" },
+    load_after = {
+      ["nvim-lspconfig"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/opt/lspsaga.nvim"
+  },
+  ["mkdir.nvim"] = {
+    config = { "\27LJ\2\n%\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\nmkdir\frequire\0" },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/opt/mkdir.nvim"
+  },
+  ["neosnippet-snippets"] = {
+    load_after = {
+      ["neosnippet.vim"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/opt/neosnippet-snippets"
+  },
+  ["neosnippet.vim"] = {
+    after = { "neosnippet-snippets" },
+    load_after = {
+      ["completion-nvim"] = true
+    },
+    loaded = false,
+    needs_bufread = true,
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/opt/neosnippet.vim"
+  },
+  ["nvim-lspconfig"] = {
+    after = { "lsp_extensions.nvim", "lspsaga.nvim" },
+    config = { "\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22plugins.lspconfig\frequire\0" },
+    load_after = {
+      ["nvim-lspinstall"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/opt/nvim-lspconfig"
+  },
+  ["nvim-lspinstall"] = {
+    after = { "nvim-lspconfig" },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/opt/nvim-lspinstall"
+  },
+  ["nvim-treesitter"] = {
+    after = { "nvim-ts-rainbow" },
+    config = { "\27LJ\2\n2\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\23plugins.treesitter\frequire\0" },
+    loaded = false,
+    needs_bufread = true,
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/opt/nvim-treesitter"
+  },
+  ["nvim-ts-rainbow"] = {
+    load_after = {
+      ["nvim-treesitter"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/opt/nvim-ts-rainbow"
+  },
+  ["packer.nvim"] = {
     loaded = true,
-    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/tabular"
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/packer.nvim"
+  },
+  ["pears.nvim"] = {
+    config = { "\27LJ\2\n-\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\18plugins.pears\frequire\0" },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/opt/pears.nvim"
+  },
+  ["startuptime.vim"] = {
+    commands = { "StartupTime" },
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/opt/startuptime.vim"
   },
   vim = {
     loaded = true,
     path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/vim"
   },
   ["vim-commentary"] = {
-    loaded = true,
-    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/vim-commentary"
-  },
-  ["vim-nix"] = {
-    loaded = true,
-    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/vim-nix"
-  },
-  ["vim-repeat"] = {
-    loaded = true,
-    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/vim-repeat"
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/opt/vim-commentary"
   },
   ["vim-surround"] = {
-    loaded = true,
-    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/vim-surround"
-  },
-  ["vim-tmux-navigator"] = {
-    loaded = true,
-    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator"
-  },
-  ["vim-unimpaired"] = {
-    loaded = true,
-    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/vim-unimpaired"
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/opt/vim-surround"
   }
 }
 
 time([[Defining packer_plugins]], false)
+-- Setup for: indent-blankline.nvim
+time([[Setup for indent-blankline.nvim]], true)
+try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\14blankline\19plugins.others\frequire\0", "setup", "indent-blankline.nvim")
+time([[Setup for indent-blankline.nvim]], false)
+
+-- Command lazy-loads
+time([[Defining lazy-load commands]], true)
+if vim.fn.exists(":StartupTime") ~= 2 then
+vim.cmd [[command! -nargs=* -range -bang -complete=file StartupTime lua require("packer.load")({'startuptime.vim'}, { cmd = "StartupTime", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args> }, _G.packer_plugins)]]
+end
+time([[Defining lazy-load commands]], false)
+
+vim.cmd [[augroup packer_load_aucmds]]
+vim.cmd [[au!]]
+  -- Event lazy-loads
+time([[Defining lazy-load event autocommands]], true)
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'vim-commentary', 'mkdir.nvim', 'vim-surround', 'nvim-lspinstall', 'nvim-treesitter', 'emmet-vim', 'indent-blankline.nvim', 'pears.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'completion-nvim'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
+time([[Defining lazy-load event autocommands]], false)
+vim.cmd("augroup END")
 if should_profile then save_profiles() end
 
 end)
