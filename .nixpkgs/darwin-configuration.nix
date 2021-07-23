@@ -17,6 +17,7 @@
       meld
       nix-direnv
       niv
+      reattach-to-user-namespace
       ripgrep
       rnix-lsp
       starship
@@ -166,26 +167,45 @@
         # start numbering at 1
         set -g base-index 1
 
+        set -g @batt_remain_short true
+
+        set -g @forecast-format '%c+%t'
+
         # List of plugins
         set -g @plugin 'tmux-plugins/tpm'
         set -g @plugin 'tmux-plugins/tmux-sensible'
-        set -g @plugin 'dracula/tmux'
-        set -g @plugin 'christoomey/vim-tmux-navigator'
+        # set -g @plugin 'christoomey/vim-tmux-navigator'
         set -g @plugin 'tmux-plugins/tmux-pain-control'
         set -g @plugin 'tmux-plugins/tmux-urlview'
+        set -g @plugin 'arcticicestudio/nord-tmux'
+        set -g @plugin 'tmux-plugins/tmux-prefix-highlight'
+        set -g @plugin 'tmux-plugins/tmux-battery'
+        set -g @plugin 'tmux-plugins/tmux-open'
+        set -g @plugin 'tmux-plugins/tmux-copycat'
+        set -g @plugin 'tmux-plugins/tmux-yank'
+        set -g @plugin 'aaronpowell/tmux-weather'
+
+        set -g @nord_tmux_show_status_content "0"
+
+        # status bar
+
+        set -g @prefix_highlight_output_prefix "#[fg=brightcyan]#[bg=black]#[nobold]#[noitalics]#[nounderscore]#[bg=brightcyan]#[fg=black]"
+        set -g @prefix_highlight_output_suffix ""
+        set -g @prefix_highlight_copy_mode_attr "fg=brightcyan,bg=black,bold"
+
+        set -g status-left "#[fg=black,bg=blue,bold] #S #[fg=blue,bg=black,nobold,noitalics,nounderscore]"
+
+        set -g status-right "#{prefix_highlight}#[fg=brightmagenta,bg=black,nobold,noitalics,nounderscore]#[fg=black,bold,bg=magenta] #{forecast} #[fg=brightblack,bg=magenta,nobold,noitalics,nounderscore]#[fg=white,bg=brightblack] #{battery_percentage} #[fg=cyan,bg=brightblack,nobold,noitalics,nounderscore]#[fg=black,bg=cyan,bold] %H:%M "
+
+#+--- Windows ---+
+        set -g window-status-format "#[fg=black,bg=brightblack,nobold,noitalics,nounderscore] #[fg=white,bg=brightblack]#I #[fg=white,bg=brightblack,nobold,noitalics,nounderscore] #[fg=white,bg=brightblack]#W #F #[fg=brightblack,bg=black,nobold,noitalics,nounderscore]"
+
+        set -g window-status-current-format "#[fg=black,bg=cyan,nobold,noitalics,nounderscore] #[fg=black,bg=cyan]#I #[fg=black,bg=cyan,nobold,noitalics,nounderscore] #[fg=black,bg=cyan]#W #F #[fg=cyan,bg=black,nobold,noitalics,nounderscore]"
+
+        set -g window-status-separator ""S
 
         # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
         run '~/.tmux/plugins/tpm/tpm'
-
-        set -g @dracula-show-battery true
-        set -g @dracula-show-flags false
-        set -g @dracula-show-powerline true
-        set -g @dracula-military-time true
-        set -g @dracula-show-left-icon session
-        set -g @dracula-show-timezone false
-        set -g @dracula-border-contrast true
-        set -g @dracula-cpu-usage false
-        set -g @dracula-ram-usage false
       '';
     };
 
