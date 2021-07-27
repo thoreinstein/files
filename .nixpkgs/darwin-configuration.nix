@@ -22,6 +22,7 @@
       ripgrep
       rnix-lsp
       starship
+      tmux
       universal-ctags
       urlview
       weechat
@@ -125,80 +126,6 @@
       };
     };
 
-    tmux = {
-      enable = true;
-      enableFzf = true;
-      enableMouse = true;
-      enableSensible = true;
-      enableVim = true;
-      extraConfig = ''
-        set -g default-terminal "screen-256color"
-        # change prefix command to C-z
-        set -g prefix C-s
-        unbind C-b
-
-        # Allow xterm titles in terminal window, terminal scrolling with scrollbar, and setting overrides of C-Up, C-Down, C-Left, C-Right
-        set -g terminal-overrides "xterm*:XT:smcup@:rmcup@:kUP5=\eOA:kDN5=\eOB:kLFT5=\eOD:kRIT5=\eOC"
-
-        # Scroll History
-        set -g history-limit 30000
-
-        # Set ability to capture on start and restore on exit window data when running an application
-        setw -g alternate-screen on
-
-        # Lower escape timing from 500ms to 50ms for quicker response to scroll-buffer access.
-        set -s escape-time 50
-
-        # setup | and - for window splitting
-        unbind %
-        bind | split-window -h
-        bind - split-window -v
-
-        # reload nix provided config
-        unbind R
-        bind R source-file /etc/tmux.conf
-
-        # title
-        set -g set-titles on
-        set -g set-titles-string '#T'
-        #set -g status-justify centre
-
-        # start window numbering at 1 for easier switching
-        set -g base-index 1
-        setw -g pane-base-index 1
-
-        # start numbering at 1
-        set -g base-index 1
-
-        set -g @batt_remain_short true
-
-        set -g @forecast-format '%c+%t'
-
-        # List of plugins
-        set -g @plugin 'tmux-plugins/tpm'
-        set -g @plugin 'tmux-plugins/tmux-sensible'
-        # set -g @plugin 'christoomey/vim-tmux-navigator'
-        set -g @plugin 'tmux-plugins/tmux-pain-control'
-        set -g @plugin 'tmux-plugins/tmux-urlview'
-        set -g @plugin 'tmux-plugins/tmux-prefix-highlight'
-        set -g @plugin 'tmux-plugins/tmux-open'
-        set -g @plugin 'tmux-plugins/tmux-copycat'
-        set -g @plugin 'tmux-plugins/tmux-yank'
-        set -g @plugin 'dracula/tmux'
-
-        run '~/.tmux/plugins/tpm/tpm'
-
-        set -g @dracula-show-battery true
-        set -g @dracula-show-flags false
-        set -g @dracula-show-powerline true
-        set -g @dracula-military-time true
-        set -g @dracula-show-left-icon session
-        set -g @dracula-show-timezone false
-        set -g @dracula-border-contrast true
-        set -g @dracula-cpu-usage false
-        set -g @dracula-ram-usage false
-        '';
-    };
 
     zsh = {
       enable = true;
