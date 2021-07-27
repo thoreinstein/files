@@ -17,6 +17,7 @@
       meld
       nix-direnv
       niv
+      nodejs #This pisses me off, but makes :LspInstallServer work…
       reattach-to-user-namespace
       ripgrep
       rnix-lsp
@@ -35,7 +36,6 @@
       cat = "bat";
       find = "fd";
       ls = "exa";
-      vim = "nvim";
       dre = "vim $HOME/.nixpkgs/darwin-configuration.nix";
       drs = "darwin-rebuild switch";
       gk = "gitk --all --date-order $(git log -g --pretty=%H)";
@@ -52,7 +52,7 @@
       FTP_PROXY = "http://127.0.0.1:3128";
       HTTP_PROXY = "http://127.0.0.1:3128";
       HTTPS_PROXY = "http://127.0.0.1:3128";
-      EDITOR = "nvim";
+      EDITOR = "vim";
       GOPATH = "$HOME/.go";
       PATH = "$GOPATH/bin:$HOME/.bin:$PATH";
       FZF_DEFAULT_COMMAND = "rg --files --hidden --no-ignore-vcs --vimgrep";
@@ -113,7 +113,10 @@
   };
 
   programs = {
-    vim = { package = pkgs.neovim; };
+    vim = { package = pkgs.vim_configurable.override {
+      python = pkgs.python3;
+       };
+    };
 
     gnupg = {
       agent = {
@@ -207,14 +210,6 @@
       enableSyntaxHighlighting = true;
     };
   };
-
-  nixpkgs.overlays = [
-    (import ./tmux-overlay.nix)
-    (import (builtins.fetchTarball {
-      url =
-        "https://github.com/nix-community/neovim-nightly-overlay/archive/a0d85023ff5a1fc148e3a7784dcd8db52588b90f.tar.gz";
-    }))
-  ];
 
   nix.nixPath = [ "$HOME/.nix-defexpr/channels" ];
 }
