@@ -15,6 +15,7 @@
       gnupg
       jq
       meld
+      neofetch
       nix-direnv
       niv
       nodejs #This pisses me off, but makes :LspInstallServer work…
