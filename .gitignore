@@ -75,3 +75,4 @@ src/
 .ipython
 .config/iterm2
 .infra-cli
+.tldrc

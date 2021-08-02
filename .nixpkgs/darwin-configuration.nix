@@ -23,6 +23,7 @@
       ripgrep
       rnix-lsp
       starship
+      tldr
       tmux
       universal-ctags
       urlview
