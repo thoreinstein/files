@@ -76,3 +76,6 @@ src/
 .config/iterm2
 .infra-cli
 .tldrc
+.bundle
+.irb_history
+.solargraph
