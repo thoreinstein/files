@@ -18,7 +18,6 @@
       neofetch
       nix-direnv
       niv
-      nodejs #This pisses me off, but makes :LspInstallServer work…
       reattach-to-user-namespace
       ripgrep
       rnix-lsp
@@ -42,6 +41,7 @@
       dre = "vim $HOME/.nixpkgs/darwin-configuration.nix";
       drs = "darwin-rebuild switch";
       gk = "gitk --all --date-order $(git log -g --pretty=%H)";
+      vim = "nvim";
     };
 
     shells = with pkgs; [ bashInteractive zsh ];
@@ -116,10 +116,7 @@
   };
 
   programs = {
-    vim = { package = pkgs.vim_configurable.override {
-      python = pkgs.python3;
-       };
-    };
+    vim = { package = pkgs.neovim; };
 
     gnupg = {
       agent = {
