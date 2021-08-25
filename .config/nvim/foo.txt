@@ -1,0 +1,23 @@
+~                                                             ║  - /Users/kon8522/.local/share/nvim/site/pack/packer/opt/startuptime.vim        ║
+~                                                             ║  - /Users/kon8522/.local/share/nvim/site/pack/packer/opt/vim-commentary         ║
+~                                                             ║  - /Users/kon8522/.local/share/nvim/site/pack/packer/opt/indent-blankline.nvim  ║
+~                                                             ║  - /Users/kon8522/.local/share/nvim/site/pack/packer/opt/completion-nvim        ║
+~                                                             ║  - /Users/kon8522/.local/share/nvim/site/pack/packer/opt/nvim-lspinstall        ║
+~                                                             ║  - /Users/kon8522/.local/share/nvim/site/pack/packer/opt/vim-surround           ║
+~                                                             ║  - /Users/kon8522/.local/share/nvim/site/pack/packer/opt/neosnippet-snippets    ║
+~                                                             ║  - /Users/kon8522/.local/share/nvim/site/pack/packer/opt/nvim-lspconfig         ║
+~                                                             ║  - /Users/kon8522/.local/share/nvim/site/pack/packer/opt/nvim-ts-rainbow        ║
+~                                                             ║  - /Users/kon8522/.local/share/nvim/site/pack/packer/opt/pears.nvim             ║
+~                                                             ║  - /Users/kon8522/.local/share/nvim/site/pack/packer/opt/lsp_extensions.nvim    ║
+~                                                             ║  - /Users/kon8522/.local/share/nvim/site/pack/packer/opt/lspsaga.nvim           ║
+~                                                             ║  - /Users/kon8522/.local/share/nvim/site/pack/packer/opt/vim-repeat             ║
+~                                                             ║  - /Users/kon8522/.local/share/nvim/site/pack/packer/opt/emmet-vim              ║
+~                                                             ║  - /Users/kon8522/.local/share/nvim/site/pack/packer/opt/mkdir.nvim             ║
+~                                                             ║  - /Users/kon8522/.local/share/nvim/site/pack/packer/opt/neosnippet.vim         ║
+~                                                             ║  - /Users/kon8522/.local/share/nvim/site/pack/packer/opt/nvim-treesitter        ║
+~                                                             ║  - /Users/kon8522/.local/share/nvim/site/pack/packer/start/popup.nvim           ║
+~                                                             ║  - /Users/kon8522/.local/share/nvim/site/pack/packer/start/neuron.nvim          ║
+~                                                             ║  - /Users/kon8522/.local/share/nvim/site/pack/packer/start/plenary.nvim         ║
+~                                                             ║  - /Users/kon8522/.local/share/nvim/site/pack/packer/start/telescope.nvim       ║
+~                                                             ║  - /Users/kon8522/.local/share/nvim/site/pack/packer/start/vim                  ║
+
