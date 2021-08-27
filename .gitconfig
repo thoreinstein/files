@@ -20,6 +20,7 @@
 [core]
   whitespace = space-before-tab,-indent-with-non-tab,trailing-space
   excludesFile = "~/.global_gitignore"
+  editor = nvim
 
 [color]
   ui = auto
@@ -82,6 +83,6 @@
   cmd = vim -f -c Gdiffsplit! $LOCAL $REMOTE
 [commit]
   gpgsign = true
-	template = /Users/kon8522/.gittemplate
+	template = ~/.gittemplate
 [rerere]
 	enabled = true
