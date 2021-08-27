@@ -16,7 +16,7 @@ packer.startup(function(use)
 	use 'tpope/vim-surround'
 	use 'tpope/vim-commentary'
 	use 'tpope/vim-unimpaired'
-
+	use 'glepnir/lspsaga.nvim'
 	use {
 		"folke/trouble.nvim",
 		requires = "kyazdani42/nvim-web-devicons",

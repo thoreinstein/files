@@ -1,3 +1,4 @@
+local saga = require "lspsaga"
 local sumneko_root_path = vim.env.HOME .. '/src/lua-language-server'
 local sumneko_binary = sumneko_root_path .. '/bin/macOS/lua-language-server'
 
@@ -44,3 +45,7 @@ require'lspconfig'.gopls.setup{
         },
     },
 }
+
+require'lspconfig'.rnix.setup{}
+
+saga.init_lsp_saga()
