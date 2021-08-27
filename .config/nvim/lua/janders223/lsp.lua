@@ -31,7 +31,9 @@ require'lspconfig'.sumneko_lua.setup {
     },
 }
 
-require'lspconfig'.yamlls.setup{}
+require'lspconfig'.yamlls.setup{
+	on_attach=on_attach
+}
 
 require'lspconfig'.gopls.setup{
     on_attach=on_attach,
@@ -46,6 +48,11 @@ require'lspconfig'.gopls.setup{
     },
 }
 
-require'lspconfig'.rnix.setup{}
+require'lspconfig'.rnix.setup{
+	on_attach=on_attach
+}
+
+-- require('jdtls').start_or_attach({cmd = {'jdtls'}})
+ require'lspconfig'.jdtls.setup{ cmd = { 'jdtls' } }
 
 saga.init_lsp_saga()
