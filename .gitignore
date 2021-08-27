@@ -79,3 +79,5 @@ src/
 .bundle
 .irb_history
 .solargraph
+.anyconnect
+.cisco
