@@ -57,7 +57,7 @@
       HTTPS_PROXY = "http://127.0.0.1:3128";
       EDITOR = "vim";
       GOPATH = "$HOME/.go";
-      PATH = "$GOPATH/bin:$HOME/.bin:$PATH";
+      PATH = "$GOPATH/bin:$HOME/.bin:$HOME/.local/bin:$PATH";
       FZF_DEFAULT_COMMAND = "rg --files --hidden --no-ignore-vcs --vimgrep";
       FZF_DEFAULT_OPTS = "--height 50% --layout=reverse --border -m";
     };
