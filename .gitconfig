@@ -58,6 +58,9 @@
 [url "git://gist.github.com/"]
   insteadOf = "gist:"
 
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
+
 [pull]
   rebase = true
 
