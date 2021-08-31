@@ -6,6 +6,10 @@ vim.opt.wildignore = {
 	'.git',
 	'node_modules',
 }
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+vim.opt.number = true
+vim.opt.relativenumber = true
 
 vim.g.mapleader = ","
 
