@@ -22,7 +22,7 @@ packer.startup(function(use)
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
 	use 'neovim/nvim-lspconfig'
-	use 'hrsh7th/nvim-compe'
+	-- use 'hrsh7th/nvim-compe'
 	use 'tpope/vim-surround'
 	use 'tpope/vim-commentary'
 	use 'tpope/vim-unimpaired'
@@ -30,6 +30,13 @@ packer.startup(function(use)
 	use 'mfussenegger/nvim-jdtls'
 	use 'ThePrimeagen/harpoon'
 	use 'andymass/vim-matchup'
+	use 'L3MON4D3/LuaSnip'
+	use "hrsh7th/nvim-cmp"
+	use "hrsh7th/cmp-buffer"
+	use "hrsh7th/cmp-path"
+	use "hrsh7th/cmp-nvim-lua"
+	use "hrsh7th/cmp-nvim-lsp"
+	use "saadparwaiz1/cmp_luasnip"
 	use {
 		"folke/trouble.nvim",
 		requires = "kyazdani42/nvim-web-devicons",
