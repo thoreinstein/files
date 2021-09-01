@@ -21,6 +21,7 @@ vim.opt.smartcase = true
 vim.opt.updatetime = 1000
 vim.opt.hidden = true
 vim.opt.scrolloff = 10
+vim.opt.clipboard = "unnamedplus"
 
 vim.g.mapleader = ","
 
