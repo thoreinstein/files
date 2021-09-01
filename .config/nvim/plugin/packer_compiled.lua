@@ -44,8 +44,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/Users/janders/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/Users/janders/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/Users/janders/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/Users/janders/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/Users/janders/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
+local package_path_str = "/Users/kon8522/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/Users/kon8522/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/Users/kon8522/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/Users/kon8522/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/Users/kon8522/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -71,67 +71,75 @@ time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   gruvbox = {
     loaded = true,
-    path = "/Users/janders/.local/share/nvim/site/pack/packer/start/gruvbox"
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/gruvbox"
+  },
+  harpoon = {
+    loaded = true,
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/harpoon"
   },
   ["lspsaga.nvim"] = {
     loaded = true,
-    path = "/Users/janders/.local/share/nvim/site/pack/packer/start/lspsaga.nvim"
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/lspsaga.nvim"
   },
   ["nvim-compe"] = {
     loaded = true,
-    path = "/Users/janders/.local/share/nvim/site/pack/packer/start/nvim-compe"
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/nvim-compe"
   },
   ["nvim-jdtls"] = {
     loaded = true,
-    path = "/Users/janders/.local/share/nvim/site/pack/packer/start/nvim-jdtls"
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/nvim-jdtls"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
-    path = "/Users/janders/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
   },
   ["nvim-treesitter"] = {
     loaded = true,
-    path = "/Users/janders/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
-    path = "/Users/janders/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
-    path = "/Users/janders/.local/share/nvim/site/pack/packer/start/packer.nvim"
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/packer.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,
-    path = "/Users/janders/.local/share/nvim/site/pack/packer/start/plenary.nvim"
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/plenary.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,
-    path = "/Users/janders/.local/share/nvim/site/pack/packer/start/telescope.nvim"
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/telescope.nvim"
   },
   ["trouble.nvim"] = {
-    config = { "\27LJ\2\nS\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\14auto_open\2\15auto_close\2\nsetup\ftrouble\frequire\0" },
+    config = { "\27LJ\2\nS\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\15auto_close\2\14auto_open\2\nsetup\ftrouble\frequire\0" },
     loaded = true,
-    path = "/Users/janders/.local/share/nvim/site/pack/packer/start/trouble.nvim"
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/trouble.nvim"
   },
   ["vim-commentary"] = {
     loaded = true,
-    path = "/Users/janders/.local/share/nvim/site/pack/packer/start/vim-commentary"
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/vim-commentary"
+  },
+  ["vim-matchup"] = {
+    loaded = true,
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/vim-matchup"
   },
   ["vim-surround"] = {
     loaded = true,
-    path = "/Users/janders/.local/share/nvim/site/pack/packer/start/vim-surround"
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/vim-surround"
   },
   ["vim-unimpaired"] = {
     loaded = true,
-    path = "/Users/janders/.local/share/nvim/site/pack/packer/start/vim-unimpaired"
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/vim-unimpaired"
   }
 }
 
 time([[Defining packer_plugins]], false)
 -- Config for: trouble.nvim
 time([[Config for trouble.nvim]], true)
-try_loadstring("\27LJ\2\nS\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\14auto_open\2\15auto_close\2\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
+try_loadstring("\27LJ\2\nS\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\15auto_close\2\14auto_open\2\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
 time([[Config for trouble.nvim]], false)
 if should_profile then save_profiles() end
 

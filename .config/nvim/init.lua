@@ -28,6 +28,8 @@ packer.startup(function(use)
 	use 'tpope/vim-unimpaired'
 	use 'glepnir/lspsaga.nvim'
 	use 'mfussenegger/nvim-jdtls'
+	use 'ThePrimeagen/harpoon'
+	use 'andymass/vim-matchup'
 	use {
 		"folke/trouble.nvim",
 		requires = "kyazdani42/nvim-web-devicons",
