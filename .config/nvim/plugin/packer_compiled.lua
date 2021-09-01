@@ -146,6 +146,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/vim-commentary"
   },
+  ["vim-fugitive"] = {
+    loaded = true,
+    path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/vim-fugitive"
+  },
   ["vim-matchup"] = {
     loaded = true,
     path = "/Users/kon8522/.local/share/nvim/site/pack/packer/start/vim-matchup"
