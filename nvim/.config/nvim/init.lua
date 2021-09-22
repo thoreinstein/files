@@ -34,7 +34,6 @@ packer.startup(function(use)
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
 	use 'neovim/nvim-lspconfig'
-	-- use 'hrsh7th/nvim-compe'
 	use 'tpope/vim-surround'
 	use 'tpope/vim-commentary'
 	use 'tpope/vim-unimpaired'
