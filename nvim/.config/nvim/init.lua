@@ -49,6 +49,7 @@ packer.startup(function(use)
 	use "hrsh7th/cmp-nvim-lsp"
 	use "saadparwaiz1/cmp_luasnip"
     use "tpope/vim-fugitive"
+    use "github/copilot.vim"
 	use {
 		"folke/trouble.nvim",
 		requires = "kyazdani42/nvim-web-devicons",

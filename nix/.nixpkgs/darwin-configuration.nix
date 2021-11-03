@@ -18,6 +18,7 @@
       neofetch
       nix-direnv
       niv
+      nodejs
       reattach-to-user-namespace
       ripgrep
       rnix-lsp
@@ -132,6 +133,12 @@
     };
   };
 
-services.nix-daemon.enable = true;
+  nixpkgs.overlays = [
+    (import (builtins.fetchTarball {
+      url = https://github.com/nix-community/neovim-nightly-overlay/archive/0634554dc8c99ac857e8a438ca57db51a7abfaff.tar.gz;
+    }))
+  ];
+
+  services.nix-daemon.enable = true;
   nix.nixPath = [ "$HOME/.nix-defexpr/channels" ];
 }
