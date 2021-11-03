@@ -22,6 +22,7 @@
       ripgrep
       rnix-lsp
       starship
+      stow
       tldr
       tmux
       universal-ctags
@@ -49,12 +50,6 @@
     variables = {
       SHELL = "${pkgs.zsh}/bin/zsh";
       LANG = "en_US.UTF-8";
-      ftp_proxy = "http://127.0.0.1:3128";
-      http_proxy = "http://127.0.0.1:3128";
-      https_proxy = "http://127.0.0.1:3128";
-      FTP_PROXY = "http://127.0.0.1:3128";
-      HTTP_PROXY = "http://127.0.0.1:3128";
-      HTTPS_PROXY = "http://127.0.0.1:3128";
       EDITOR = "vim";
       GOPATH = "$HOME/.go";
       PATH = "$GOPATH/bin:$HOME/.bin:$HOME/.local/bin:$PATH";
@@ -137,5 +132,6 @@
     };
   };
 
+services.nix-daemon.enable = true;
   nix.nixPath = [ "$HOME/.nix-defexpr/channels" ];
 }
