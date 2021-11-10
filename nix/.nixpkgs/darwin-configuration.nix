@@ -4,7 +4,6 @@
   environment = {
     systemPackages = with pkgs; [
       bat
-      cachix
       config.programs.vim.package
       direnv
       exa
@@ -13,8 +12,8 @@
       gh
       gitFull
       gnupg
+      google-cloud-sdk
       jq
-      meld
       neofetch
       nix-direnv
       niv
@@ -28,9 +27,6 @@
       tmux
       universal-ctags
       urlview
-      weechat
-      yubikey-manager
-      yubikey-personalization
     ];
 
     loginShell = "${pkgs.zsh}/bin/zsh -l";
@@ -125,7 +121,7 @@
     zsh = {
       enable = true;
       enableBashCompletion = true;
-      enableCompletion = true;
+      enableCompletion = false;
       enableFzfCompletion = true;
       enableFzfGit = true;
       enableFzfHistory = true;
@@ -140,5 +136,4 @@
   ];
 
   services.nix-daemon.enable = true;
-  nix.nixPath = [ "$HOME/.nix-defexpr/channels" ];
 }
