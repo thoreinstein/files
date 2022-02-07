@@ -131,7 +131,7 @@
 
   nixpkgs.overlays = [
     (import (builtins.fetchTarball {
-      url = https://github.com/nix-community/neovim-nightly-overlay/archive/0634554dc8c99ac857e8a438ca57db51a7abfaff.tar.gz;
+      url = https://github.com/nix-community/neovim-nightly-overlay/archive/4b0fe150f81a4eb5dffa0ef2b4069748ab0c4d6c.tar.gz;
     }))
   ];
 

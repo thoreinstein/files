@@ -30,3 +30,6 @@ disabled = true
 
 [java]
 disabled = true
+
+[gcloud]
+disabled = true

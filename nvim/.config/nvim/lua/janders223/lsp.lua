@@ -1,6 +1,6 @@
 local saga = require "lspsaga"
 local sumneko_root_path = vim.env.HOME .. '/src/lua-language-server'
-local sumneko_binary = sumneko_root_path .. '/bin/macOS/lua-language-server'
+local sumneko_binary = sumneko_root_path .. '/bin/lua-language-server'
 
 local function on_attach()
 end
