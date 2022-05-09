@@ -31,6 +31,10 @@ require'lspconfig'.sumneko_lua.setup {
     },
 }
 
+require'lspconfig'.tsserver.setup{
+	on_attach=on_attach
+}
+
 require'lspconfig'.yamlls.setup{
 	on_attach=on_attach
 }

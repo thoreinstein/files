@@ -50,16 +50,6 @@ packer.startup(function(use)
 	use "saadparwaiz1/cmp_luasnip"
     use "tpope/vim-fugitive"
     use "github/copilot.vim"
-	use {
-		"folke/trouble.nvim",
-		requires = "kyazdani42/nvim-web-devicons",
-		config = function()
-			require("trouble").setup {
-				auto_open = true,
-				auto_close = true,
-			}
-		end
-	}
 end)
 
 -- lua/janders223

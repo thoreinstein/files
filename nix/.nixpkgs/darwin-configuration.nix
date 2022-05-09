@@ -18,10 +18,11 @@
       nix-direnv
       niv
       nodejs
+      pure-prompt
       reattach-to-user-namespace
       ripgrep
       rnix-lsp
-      starship
+      /* starship */
       stow
       tldr
       tmux
