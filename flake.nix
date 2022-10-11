@@ -1,7 +1,7 @@
 {
   description = "A flake for building Hello World";
 
-  inputs.nixpkgs.url = github:NixOS/nixpkgs/nixpks-unstable;
+  inputs.nixpkgs.url = github:NixOS/nixpkgs/nixpkgs-unstable;
 
   outputs = { self, nixpkgs }: {
 
