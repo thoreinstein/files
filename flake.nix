@@ -34,6 +34,7 @@
                 nixpkgs = nixpkgsConfig;
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
+                home-manager.users.janders = import ./home-manager/default.nix { inherit pkgs; };
               }
             ];
           };
