@@ -1,13 +1,10 @@
 local saga = require "lspsaga"
-local sumneko_root_path = vim.env.HOME .. '/src/lua-language-server'
-local sumneko_binary = sumneko_root_path .. '/bin/lua-language-server'
 
 local function on_attach()
 end
 
 require'lspconfig'.sumneko_lua.setup {
     on_attach = on_attach,
-    cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
     settings = {
         Lua = {
             runtime = {
@@ -52,11 +49,8 @@ require'lspconfig'.gopls.setup{
     },
 }
 
--- require'lspconfig'.rnix.setup{
--- 	on_attach=on_attach
--- }
-
--- require('jdtls').start_or_attach({cmd = {'jdtls'}})
- require'lspconfig'.jdtls.setup{ cmd = { 'jdtls' } }
+require'lspconfig'.rnix.setup{
+	on_attach=on_attach
+}
 
 saga.init_lsp_saga()

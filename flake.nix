@@ -1,26 +1,44 @@
 {
-  description = "A flake for building Hello World";
+  description = "janders' nix systems";
 
-  inputs.nixpkgs.url = github:NixOS/nixpkgs/nixpkgs-unstable;
 
-  outputs = { self, nixpkgs }: {
-
-    packages.x86_64-darwin.default =
-      with import nixpkgs { system = "x86_64-darwin"; };
-      stdenv.mkDerivation {
-        name = "dotfiles";
-        src = self;
-        installPhase = ''
-        ${pkgs.stow}/bin/stow bin
-        ${pkgs.stow}/bin/stow config
-        ${pkgs.stow}/bin/stow direnv
-        ${pkgs.stow}/bin/stow git
-        ${pkgs.stow}/bin/stow gnupg
-        ${pkgs.stow}/bin/stow nvim
-        ${pkgs.stow}/bin/stow tmux
-        ${pkgs.stow}/bin/stow zsh
-        '';
-      };
-
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    darwin.url = "github:lnl7/nix-darwin/master";
+    darwin.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    dotfiles.url = "github:janders223/files";
+    neovim.url = "github:nix-community/neovim-nightly-overlay";
+    flake-utils.url = "github:numtide/flake-utils";
   };
+
+  outputs = { self, nixpkgs, darwin, dotfiles, neovim, home-manager, flake-utils }:
+    flake-utils.lib.eachDefaultSystem (system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+        nixpkgsConfig = {
+          overlays = [
+            neovim.overlay
+          ];
+        };
+      in
+      {
+        legacyPackages.darwinConfigurations = {
+          mac-0002 = darwin.lib.darwinSystem {
+            system = "x86_64-darwin";
+            modules = [
+              ./hosts/mac-0002/default.nix
+              home-manager.darwinModules.home-manager
+              {
+                nixpkgs = nixpkgsConfig;
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+              }
+            ];
+          };
+        };
+
+        devShells.default = import ./shell.nix { inherit pkgs; };
+      });
 }
