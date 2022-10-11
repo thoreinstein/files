@@ -5,8 +5,7 @@
 
   outputs = { self, nixpkgs }: {
 
-    defaultPackage.x86_64-darwin =
-      # Notice the reference to nixpkgs here.
+    packages.x86_64-darwin.default =
       with import nixpkgs { system = "x86_64-darwin"; };
       stdenv.mkDerivation {
         name = "dotfiles";
