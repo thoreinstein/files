@@ -44,7 +44,7 @@
       enabled = "true";
     };
   };
-  ignores = [ ".direnv" ".cache" ".CFUserTextEncoding" ".DS_Store" ".netrwhist" ];
+  ignores = [ ".direnv" ".cache" ".CFUserTextEncoding" ".DS_Store" ".netrwhist" "secrets.env"];
   signing = {
     gpgPath = "${pkgs.gnupg}/bin/gpg";
     key = "0x05EBACFA9DDDB054";
