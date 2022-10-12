@@ -13,6 +13,7 @@
       find = "fd";
       l = "ls -halF";
       vim = "${pkgs.neovim}/bin/nvim";
+      da = "${pkgs.direnv}/bin/direnv allow";
     };
 
     packages = with pkgs; [
