@@ -2,7 +2,6 @@
   home = {
     stateVersion = "22.05";
 
-
     sessionVariables = {
       LANG = "en_US.UTF-8";
       EDITOR = "vim";
@@ -14,6 +13,7 @@
       l = "ls -halF";
       vim = "${pkgs.neovim}/bin/nvim";
       da = "${pkgs.direnv}/bin/direnv allow";
+      k = "kubectl";
     };
 
     packages = with pkgs; [
@@ -147,6 +147,11 @@
       ];
       initExtra = ''
         prompt pure
+
+        if command -v kubectl &> /dev/null
+        then
+            source <(kubectl completion zsh)
+        fi
       '';
     };
   };
