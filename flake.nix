@@ -12,7 +12,7 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, darwin, dotfiles, neovim, home-manager, flake-utils }:
+  outputs = { self, nixpkgs, darwin, neovim, home-manager, flake-utils }:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
