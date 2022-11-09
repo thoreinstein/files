@@ -38,7 +38,6 @@ packer.startup(function(use)
     use 'tpope/vim-commentary'
     use 'tpope/vim-unimpaired'
     use 'glepnir/lspsaga.nvim'
-    use 'mfussenegger/nvim-jdtls'
     use 'ThePrimeagen/harpoon'
     use 'andymass/vim-matchup'
     use 'L3MON4D3/LuaSnip'
@@ -54,6 +53,8 @@ packer.startup(function(use)
         requires = "kyazdani42/nvim-web-devicons",
     }
     use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+    use 'hashivim/vim-terraform'
+    use 'junegunn/tabularize'
 end)
 
 -- lua/janders223

@@ -37,6 +37,19 @@
               }
             ];
           };
+          Tensure = darwin.lib.darwinSystem {
+            system = "x86_64-darwin";
+            modules = [
+              ./hosts/Tensure/default.nix
+              home-manager.darwinModules.home-manager
+              {
+                nixpkgs = nixpkgsConfig;
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.users.janders = import ./home-manager/default.nix { inherit pkgs; };
+              }
+            ];
+          };
         };
 
         devShells.default = import ./shell.nix { inherit pkgs; };

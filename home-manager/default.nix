@@ -7,6 +7,8 @@
       EDITOR = "vim";
     };
 
+    sessionPath = ["$HOME/.bin"];
+
     shellAliases = {
       cat = "bat";
       find = "fd";
@@ -14,6 +16,7 @@
       vim = "${pkgs.neovim}/bin/nvim";
       da = "${pkgs.direnv}/bin/direnv allow";
       k = "kubectl";
+      tm = "tmux-sessionizer";
     };
 
     packages = with pkgs; [
@@ -24,7 +27,13 @@
       ripgrep
     ];
 
-
+    file = {
+        tmux-sessionizer = {
+            executable = true;
+            source = ../files/tmux-sessionizer;
+            target = ".bin/tmux-sessionizer";
+        };
+    };
   };
 
   xdg.configFile.nvim = {
@@ -152,6 +161,8 @@
         then
             source <(kubectl completion zsh)
         fi
+
+        export PATH=$PATH:$HOME/.bin
       '';
     };
   };

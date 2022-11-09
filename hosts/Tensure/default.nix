@@ -7,14 +7,15 @@
     shell = pkgs.zsh;
   };
 
-  fonts = {
-    fontDir.enable = true;
-    fonts = with pkgs; [ hasklig nerdfonts ];
-  };
+  /* fonts = { */
+  /*   fontDir.enable = true; */
+  /*   fonts = with pkgs; [ hasklig nerdfonts ]; */
+  /* }; */
 
   environment = {
     pathsToLink = [ "/share/zsh" ];
     shells = with pkgs; [ bashInteractive zsh ];
+    systemPath = ["$HOME/.bin"];
   };
 
   system = {
