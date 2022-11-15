@@ -22,7 +22,7 @@ vim.opt.updatetime = 1000
 vim.opt.hidden = true
 vim.opt.scrolloff = 10
 vim.opt.clipboard = "unnamedplus"
-vim.opt.termguicolors = true
+-- vim.opt.termguicolors = true
 
 vim.g.mapleader = ","
 
@@ -48,7 +48,7 @@ packer.startup(function(use)
     use "hrsh7th/cmp-nvim-lua"
     use "hrsh7th/cmp-nvim-lsp"
     use "saadparwaiz1/cmp_luasnip"
-    use "tpope/vim-fugitive"
+    use 'f-person/git-blame.nvim'
     use {
         "folke/trouble.nvim",
         requires = "kyazdani42/nvim-web-devicons",
@@ -68,21 +68,19 @@ packer.startup(function(use)
     }
     use 'rcarriga/nvim-notify'
     use({
-  "folke/noice.nvim",
-  config = function()
-    require("noice").setup({
-        -- add any options here
+        "folke/noice.nvim",
+        config = function()
+            require("noice").setup({
+                -- add any options here
+            })
+        end,
+        requires = {
+            "MunifTanjim/nui.nvim",
+        }
     })
-  end,
-  requires = {
-    -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-    "MunifTanjim/nui.nvim",
-    -- OPTIONAL:
-    --   `nvim-notify` is only needed, if you want to use the notification view.
-    --   If not available, we use `mini` as the fallback
-    "rcarriga/nvim-notify",
-    }
-})
+    use {'akinsho/git-conflict.nvim', tag = "*", config = function()
+        require('git-conflict').setup()
+    end}
 
 end)
 
