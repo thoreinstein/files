@@ -81,7 +81,18 @@ packer.startup(function(use)
     use {'akinsho/git-conflict.nvim', tag = "*", config = function()
         require('git-conflict').setup()
     end}
-
+    use 'glepnir/indent-guides.nvim'
+    use 'echasnovski/mini.trailspace'
+    use 'haringsrob/nvim_context_vt'
+    use 'p00f/nvim-ts-rainbow'
+    use {
+        "windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup {} end
+    }
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    }
 end)
 
 -- lua/janders223
