@@ -53,4 +53,8 @@ require'lspconfig'.rnix.setup{
 	on_attach=on_attach
 }
 
+require'lspconfig'.terraformls.setup{
+    on_attach=on_attach
+}
+
 saga.init_lsp_saga()

@@ -22,12 +22,13 @@ vim.opt.updatetime = 1000
 vim.opt.hidden = true
 vim.opt.scrolloff = 10
 vim.opt.clipboard = "unnamedplus"
+vim.opt.termguicolors = true
 
 vim.g.mapleader = ","
 
 packer.startup(function(use)
     use 'wbthomason/packer.nvim'
-    use 'gruvbox-community/gruvbox'
+    use 'arcticicestudio/nord-vim'
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use {
         'nvim-telescope/telescope.nvim',
@@ -55,6 +56,34 @@ packer.startup(function(use)
     use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
     use 'hashivim/vim-terraform'
     use 'junegunn/tabularize'
+    use 'christoomey/vim-tmux-navigator'
+    use {
+        'sudormrfbin/cheatsheet.nvim',
+
+        requires = {
+            {'nvim-telescope/telescope.nvim'},
+            {'nvim-lua/popup.nvim'},
+            {'nvim-lua/plenary.nvim'},
+        }
+    }
+    use 'rcarriga/nvim-notify'
+    use({
+  "folke/noice.nvim",
+  config = function()
+    require("noice").setup({
+        -- add any options here
+    })
+  end,
+  requires = {
+    -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+    "MunifTanjim/nui.nvim",
+    -- OPTIONAL:
+    --   `nvim-notify` is only needed, if you want to use the notification view.
+    --   If not available, we use `mini` as the fallback
+    "rcarriga/nvim-notify",
+    }
+})
+
 end)
 
 -- lua/janders223
