@@ -22,7 +22,9 @@ vim.opt.updatetime = 1000
 vim.opt.hidden = true
 vim.opt.scrolloff = 10
 vim.opt.clipboard = "unnamedplus"
--- vim.opt.termguicolors = true
+vim.diagnostic.config({
+    virtual_text = false,
+})
 
 vim.g.mapleader = ","
 
@@ -38,6 +40,7 @@ packer.startup(function(use)
     use 'tpope/vim-surround'
     use 'tpope/vim-commentary'
     use 'tpope/vim-unimpaired'
+    use 'tpope/vim-repeat'
     use 'glepnir/lspsaga.nvim'
     use 'ThePrimeagen/harpoon'
     use 'andymass/vim-matchup'
@@ -85,14 +88,33 @@ packer.startup(function(use)
     use 'echasnovski/mini.trailspace'
     use 'haringsrob/nvim_context_vt'
     use 'p00f/nvim-ts-rainbow'
-    use {
-        "windwp/nvim-autopairs",
-        config = function() require("nvim-autopairs").setup {} end
-    }
+    use 'windwp/nvim-autopairs'
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
+    use {
+        "someone-stole-my-name/yaml-companion.nvim",
+        requires = {
+            { "neovim/nvim-lspconfig" },
+            { "nvim-lua/plenary.nvim" },
+            { "nvim-telescope/telescope.nvim" },
+        },
+        config = function()
+            require("telescope").load_extension("yaml_schema")
+        end,
+    }
+    use 'folke/lsp-colors.nvim'
+    use({
+        "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+        config = function()
+            require("lsp_lines").setup()
+        end,
+    })
+    use({
+        'j-hui/fidget.nvim',
+        config = function() require('fidget').setup{} end
+    })
 end)
 
 -- lua/janders223

@@ -1,10 +1,18 @@
 local saga = require "lspsaga"
 
-local function on_attach()
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()) --nvim-cmp
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 end
 
 require'lspconfig'.sumneko_lua.setup {
     on_attach = on_attach,
+    capabilities = capabilities,
     settings = {
         Lua = {
             runtime = {
@@ -29,15 +37,18 @@ require'lspconfig'.sumneko_lua.setup {
 }
 
 require'lspconfig'.tsserver.setup{
-	on_attach=on_attach
+	on_attach=on_attach,
+    capabilities = capabilities,
 }
 
 require'lspconfig'.yamlls.setup{
-	on_attach=on_attach
+	on_attach=on_attach,
+    capabilities = capabilities,
 }
 
 require'lspconfig'.gopls.setup{
     on_attach=on_attach,
+    capabilities = capabilities,
     cmd = {"gopls", "serve"},
     settings = {
         gopls = {
@@ -50,11 +61,13 @@ require'lspconfig'.gopls.setup{
 }
 
 require'lspconfig'.rnix.setup{
-	on_attach=on_attach
+	on_attach=on_attach,
+    capabilities = capabilities,
 }
 
 require'lspconfig'.terraformls.setup{
-    on_attach=on_attach
+    on_attach=on_attach,
+    capabilities = capabilities,
 }
 
 saga.init_lsp_saga()
