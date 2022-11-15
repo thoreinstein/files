@@ -45,7 +45,7 @@
     bat = {
       enable = true;
       config = {
-        theme = "gruvbox-dark";
+        theme = "nord";
       };
     };
 
@@ -131,7 +131,7 @@
       '';
 
       plugins = with pkgs; [
-        tmuxPlugins.gruvbox
+        tmuxPlugins.nord
         tmuxPlugins.vim-tmux-navigator
       ];
     };
