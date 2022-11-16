@@ -41,10 +41,12 @@ require'lspconfig'.tsserver.setup{
     capabilities = capabilities,
 }
 
-require'lspconfig'.yamlls.setup{
-	on_attach=on_attach,
+local yamlcfg = require('yaml-companion').setup({
+    on_attach = on_attach,
     capabilities = capabilities,
-}
+})
+
+require'lspconfig'.yamlls.setup(yamlcfg)
 
 require'lspconfig'.gopls.setup{
     on_attach=on_attach,
