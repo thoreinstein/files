@@ -70,4 +70,9 @@ require'lspconfig'.terraformls.setup{
     capabilities = capabilities,
 }
 
+require'lspconfig'.bashls.setup{
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
+
 saga.init_lsp_saga()
