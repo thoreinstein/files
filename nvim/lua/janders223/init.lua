@@ -1,3 +1,4 @@
+require('janders223.packer')
 require('janders223.set')
 require('janders223.treesitter')
 require('janders223.telescope')

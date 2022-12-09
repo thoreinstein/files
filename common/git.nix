@@ -4,6 +4,7 @@
     add = "add -p";
     l = "log --pretty=oneline -n 20 --graph --abbrev-commit";
     s = "status -sb";
+    d = "difftool";
     tags = "tag - l";
     branches = "branch -a";
     remotes = "remote -v";
@@ -24,12 +25,16 @@
     };
     diff = {
       renmaes = "copies";
+      guitool = "nvimdiff";
+      tool = "nvimdiff";
     };
     help = {
       autocorrect = "1";
     };
     merge = {
       log = "true";
+      tool = "nvimdiff";
+      conflictstyle = "diff3";
     };
     push = {
       default = "simple";
@@ -42,6 +47,17 @@
     };
     rerere = {
       enabled = "true";
+    };
+    difftool = {
+      prompt = "false";
+    };
+    mergetool = {
+      prompt = "false";
+      keepBackup = "false";
+      trustExitCode = "false";
+      nvimdiff = {
+        layout = "LOCAL,MERGED,REMOTE";
+      };
     };
   };
   ignores = [ ".direnv" ".cache" ".CFUserTextEncoding" ".DS_Store" ".netrwhist" "secrets.env"];

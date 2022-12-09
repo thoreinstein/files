@@ -85,7 +85,6 @@ return require("packer").startup(function(use)
         'j-hui/fidget.nvim',
         config = function() require('fidget').setup{} end
     })
+    use 'github/copilot.vim'
+    use 'Afourcat/treesitter-terraform-doc.nvim'
 end)
-
--- lua/janders223
-

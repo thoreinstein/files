@@ -77,4 +77,14 @@ require'lspconfig'.bashls.setup{
     capabilities = capabilities,
 }
 
+require'lspconfig'.dockerls.setup{
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
+
+require('treesitter-terraform-doc').setup({
+    command_name = "OpenDocs",
+    url_opener_command = "!open",
+})
+
 saga.init_lsp_saga()
