@@ -47,7 +47,7 @@
         bat = {
             enable = true;
             config = {
-                theme = "nord";
+                theme = "Nord";
             };
         };
 
@@ -116,6 +116,54 @@
             ];
         };
 
+        starship = {
+            enable = true;
+            enableZshIntegration = true;
+            settings = {
+                format = lib.concatStrings [
+                    "$nix_shell"
+                    "$directory"
+                    "$git_branch"
+                    "$git_commit"
+                    "$git_state"
+                    "$git_status"
+                    "$package"
+                    "$nodejs"
+                    "$python"
+                    "$terraform"
+                    "$golang"
+                    "$rust"
+                    "$jobs"
+                    "$cmd_duration"
+                    "$line_break"
+                    "$character"
+                ];
+
+                aws = {
+                    symbol = " ";
+                    style = "bold yellow";
+                    region_aliases = {
+                        "us-east-1" = "va";
+                    };
+                    profile_aliases = {
+                        "default" = "def";
+                    };
+                };
+
+                nix_shell = {
+                    format = "[$symbol($name)]($style) ";
+                    symbol = " ";
+                    style = "bold blue";
+                };
+
+                terraform = {
+                    format = "[$symbol $workspace]($style) ";
+                    symbol = "";
+                    style = "bold cyan";
+                };
+            };
+        };
+
         tmux = {
             enable = true;
             aggressiveResize = true;
@@ -145,20 +193,7 @@
             enableSyntaxHighlighting = true;
             autocd = true;
             cdpath = [ "$HOME/src" ];
-            plugins = [
-            {
-                name = "pure";
-                src = pkgs.fetchFromGitHub {
-                    owner = "sindresorhus";
-                    repo = "pure";
-                    rev = "v1.20.4";
-                    sha256 = "sha256-e1D+9EejlVZxOyErg6eRgawth5gAhv6KpgjhK06ErZc=";
-                };
-            }
-            ];
             initExtra = ''
-                prompt pure
-
                 if command -v kubectl &> /dev/null
                     then
                         source <(kubectl completion zsh)
