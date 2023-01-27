@@ -7,7 +7,7 @@
             EDITOR = "vim";
         };
 
-        sessionPath = ["$HOME/.bin"];
+        sessionPath = ["$HOME/.bin" "$HOME/.cargo/bin"];
 
         shellAliases = {
             cat = "bat";
@@ -164,7 +164,7 @@
                         source <(kubectl completion zsh)
                         fi
 
-                        export PATH=$PATH:$HOME/.bin
+                        export PATH=$PATH:$HOME/.bin:$HOME/.cargo/bin
                         '';
         };
     };
