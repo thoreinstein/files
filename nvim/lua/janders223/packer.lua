@@ -6,7 +6,28 @@ return require("packer").startup(function(use)
         'nvim-telescope/telescope.nvim',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
-    use 'neovim/nvim-lspconfig'
+    use {
+      'VonHeikemen/lsp-zero.nvim',
+      requires = {
+        -- LSP Support
+        {'neovim/nvim-lspconfig'},
+        {'williamboman/mason.nvim'},
+        {'williamboman/mason-lspconfig.nvim'},
+
+        -- Autocompletion
+        {'hrsh7th/nvim-cmp'},
+        {'hrsh7th/cmp-buffer'},
+        {'hrsh7th/cmp-path'},
+        {'saadparwaiz1/cmp_luasnip'},
+        {'hrsh7th/cmp-nvim-lsp'},
+        {'hrsh7th/cmp-nvim-lua'},
+        {'hrsh7th/cmp-nvim-lsp-signature-help'},
+
+        -- Snippets
+        {'L3MON4D3/LuaSnip'},
+        {'rafamadriz/friendly-snippets'},
+      }
+    }
     use 'tpope/vim-surround'
     use 'tpope/vim-commentary'
     use 'tpope/vim-unimpaired'
@@ -14,13 +35,6 @@ return require("packer").startup(function(use)
     use 'glepnir/lspsaga.nvim'
     use 'ThePrimeagen/harpoon'
     use 'andymass/vim-matchup'
-    use 'L3MON4D3/LuaSnip'
-    use "hrsh7th/nvim-cmp"
-    use "hrsh7th/cmp-buffer"
-    use "hrsh7th/cmp-path"
-    use "hrsh7th/cmp-nvim-lua"
-    use "hrsh7th/cmp-nvim-lsp"
-    use "saadparwaiz1/cmp_luasnip"
     use 'f-person/git-blame.nvim'
     use {
         "folke/trouble.nvim",
@@ -87,4 +101,6 @@ return require("packer").startup(function(use)
     })
     use 'github/copilot.vim'
     use 'Afourcat/treesitter-terraform-doc.nvim'
+    use 'ThePrimeagen/git-worktree.nvim'
+    use 'simrat39/rust-tools.nvim'
 end)

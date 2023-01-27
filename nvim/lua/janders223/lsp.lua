@@ -1,90 +1,67 @@
-local saga = require "lspsaga"
+local lsp = require('lsp-zero')
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()) --nvim-cmp
-capabilities.textDocument.completion.completionItem.snippetSupport = true
+lsp.preset('recommended')
 
-local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+lsp.ensure_installed({
+    'bashls',
+    'dockerls',
+    'gopls',
+    'jsonls',
+    'rnix',
+    'rust_analyzer',
+    'sumneko_lua',
+    'terraformls',
+    'tsserver',
+    'vimls',
+    'yamlls',
+})
 
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-end
-
-require'lspconfig'.sumneko_lua.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
+lsp.configure('sumneko_lua', {
     settings = {
         Lua = {
-            runtime = {
-                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                version = 'LuaJIT',
-                -- Setup your lua path
-                path = vim.split(package.path, ';'),
-            },
             diagnostics = {
-                -- Get the language server to recognize the `vim` global
                 globals = {'vim'},
             },
-            workspace = {
-                -- Make the server aware of Neovim runtime files
-                library = {
-                    [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-                    [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-                },
-            },
-        },
-    },
-}
-
-require'lspconfig'.tsserver.setup{
-	on_attach=on_attach,
-    capabilities = capabilities,
-}
-
-local yamlcfg = require('yaml-companion').setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
+        }
+    }
 })
 
-require'lspconfig'.yamlls.setup(yamlcfg)
-
-require'lspconfig'.gopls.setup{
-    on_attach=on_attach,
-    capabilities = capabilities,
-    cmd = {"gopls", "serve"},
-    settings = {
-        gopls = {
-            analyses = {
-                unusedparams = true,
-            },
-            staticcheck = true,
-        },
-    },
-}
-
-require'lspconfig'.rnix.setup{
-	on_attach=on_attach,
-    capabilities = capabilities,
-}
-
-require'lspconfig'.terraformls.setup{
-    on_attach=on_attach,
-    capabilities = capabilities,
-}
-
-require'lspconfig'.bashls.setup{
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
-
-require'lspconfig'.dockerls.setup{
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
-
-require('treesitter-terraform-doc').setup({
-    command_name = "OpenDocs",
-    url_opener_command = "!open",
+local cmp = require('cmp')
+local cmp_select = {behavior = cmp.SelectBehavior.Select}
+local cmp_mappings = lsp.defaults.cmp_mappings({
+  ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+  ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+  ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+  ["<C-Space>"] = cmp.mapping.complete(),
 })
 
-saga.init_lsp_saga()
+-- disable completion with tab
+-- this helps with copilot setup
+cmp_mappings['<Tab>'] = nil
+cmp_mappings['<S-Tab>'] = nil
+
+lsp.setup_nvim_cmp({
+  mapping = cmp_mappings
+})
+
+lsp.on_attach(function(client, bufnr)
+  local opts = {buffer = bufnr, remap = false}
+
+  vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+  vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+  vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
+  vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
+  vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
+  vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
+  vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
+  vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
+  vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
+  vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+end)
+
+lsp.setup()
+
+vim.diagnostic.config({
+    virtual_text = true,
+})
+
