@@ -10,6 +10,9 @@
     remotes = "remote -v";
     lg = "log --color --decorate --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an (%G?)>%Creset' --abbrev-commit";
     undo = "!git reset HEAD~1 --mixed";
+    wip = "!git add -A && git commit -m 'WIP'";
+    rewrite = "!f() { git rebase -i HEAD~$1; }; f";
+    wa = "!f () { git worktree add --track -b $1 $1 $2; cd $1; cp ../main/.envrc .; direnv allow; }; f";
   };
 
   extraConfig = {
