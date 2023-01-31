@@ -5,7 +5,6 @@ lsp.preset('recommended')
 lsp.ensure_installed({
     'bashls',
     'dockerls',
-    'gopls',
     'jsonls',
     'rnix',
     'rust_analyzer',

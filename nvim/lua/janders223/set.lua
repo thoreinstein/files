@@ -24,7 +24,6 @@ vim.diagnostic.config({
     virtual_text = false,
 })
 
-vim.g.mapleader = ","
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.config/nvim/undodir"
