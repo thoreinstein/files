@@ -48,7 +48,6 @@ require("lazy").setup({
     'tpope/vim-unimpaired',
     'tpope/vim-repeat',
     'glepnir/lspsaga.nvim',
-    'ThePrimeagen/harpoon',
     'andymass/vim-matchup',
     'f-person/git-blame.nvim',
     {
@@ -88,6 +87,7 @@ require("lazy").setup({
     'haringsrob/nvim_context_vt',
     'p00f/nvim-ts-rainbow',
     'windwp/nvim-autopairs',
+    'kdheepak/tabline.nvim',
     {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'kyazdani42/nvim-web-devicons', opt = true }
